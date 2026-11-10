@@ -1,0 +1,88 @@
+{
+  "task_id": "R04-T009",
+  "issue": 14,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "complete fixture",
+      "actual": {
+        "passed": true,
+        "executable_failures": [],
+        "config_failures": [],
+        "all_failures": [],
+        "sanitized_config": {
+          "model_dir": "/opt/models",
+          "api_key": "[REDACTED]"
+        },
+        "checks_performed": 4
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "missing git",
+      "actual": {
+        "passed": false,
+        "executable_failures": [
+          "MISSING_EXECUTABLE: 'git' was not found on system PATH."
+        ],
+        "config_failures": [],
+        "all_failures": [
+          "MISSING_EXECUTABLE: 'git' was not found on system PATH."
+        ],
+        "sanitized_config": {
+          "model_dir": "/opt/models",
+          "api_key": "[REDACTED]"
+        },
+        "checks_performed": 4
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "missing api_key",
+      "actual": {
+        "passed": false,
+        "executable_failures": [],
+        "config_failures": [
+          "ABSENT_CONFIG: Key 'api_key' missing from configuration."
+        ],
+        "all_failures": [
+          "ABSENT_CONFIG: Key 'api_key' missing from configuration."
+        ],
+        "sanitized_config": {
+          "model_dir": "/opt/models"
+        },
+        "checks_performed": 4
+      },
+      "status": "PASSED"
+    }
+  ],
+  "experiment_results": {
+    "tier_minimal": {
+      "checks_count": 4,
+      "passed": true,
+      "executable_failure_count": 0,
+      "config_failure_count": 0,
+      "duration_microseconds": 1.33,
+      "secrets_redacted": true
+    },
+    "tier_standard": {
+      "checks_count": 8,
+      "passed": true,
+      "executable_failure_count": 0,
+      "config_failure_count": 0,
+      "duration_microseconds": 2.29,
+      "secrets_redacted": true
+    },
+    "tier_enterprise": {
+      "checks_count": 12,
+      "passed": false,
+      "executable_failure_count": 1,
+      "config_failure_count": 1,
+      "duration_microseconds": 3.21,
+      "secrets_redacted": true
+    }
+  },
+  "unittest_exit_code": 0,
+  "unittest_stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+}
