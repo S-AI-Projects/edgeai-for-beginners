@@ -1,0 +1,45 @@
+{
+  "task_id": "R04-T008",
+  "issue": 13,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "[export, quantize, benchmark]",
+      "actual": {
+        "valid": true,
+        "completed_stages": [
+          "export",
+          "quantize",
+          "benchmark"
+        ],
+        "final_artifact": "benchmark_report",
+        "all_available_artifacts": [
+          "benchmark_report",
+          "olive_source_model",
+          "onnx_model",
+          "quantized_model"
+        ],
+        "simulation_note": "Mock validation of Olive configuration graph; no actual model conversion performed."
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "[export, benchmark]",
+      "expected": "OptimizationWorkflowError",
+      "diagnosis": "Invalid stage ordering at step 2: Cannot execute 'benchmark'. Expected 'quantize'. (Benchmark cannot precede quantize).",
+      "status": "PASSED"
+    },
+    {
+      "input": "unknown_source artifact",
+      "expected": "OptimizationWorkflowError",
+      "status": "PASSED"
+    },
+    {
+      "check": "recovery after error",
+      "status": "PASSED"
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+}
