@@ -1,0 +1,83 @@
+{
+  "task_id": "R04-T004",
+  "issue": 9,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "[export, quantize, benchmark]",
+      "actual": {
+        "valid": true,
+        "completed_stages": [
+          "export",
+          "quantize",
+          "benchmark"
+        ],
+        "final_artifact": "benchmark_report",
+        "state_trace": [
+          {
+            "step": 0,
+            "action": "INIT",
+            "stage": null,
+            "input_artifact": null,
+            "output_artifact": null,
+            "available_artifacts": [
+              "source_model_v1"
+            ]
+          },
+          {
+            "step": 1,
+            "action": "EXEC_EXPORT",
+            "stage": "export",
+            "input_artifact": "source_model_v1",
+            "output_artifact": "exported_ir",
+            "available_artifacts": [
+              "exported_ir",
+              "source_model_v1"
+            ]
+          },
+          {
+            "step": 2,
+            "action": "EXEC_QUANTIZE",
+            "stage": "quantize",
+            "input_artifact": "exported_ir",
+            "output_artifact": "quantized_model",
+            "available_artifacts": [
+              "exported_ir",
+              "quantized_model",
+              "source_model_v1"
+            ]
+          },
+          {
+            "step": 3,
+            "action": "EXEC_BENCHMARK",
+            "stage": "benchmark",
+            "input_artifact": "quantized_model",
+            "output_artifact": "benchmark_report",
+            "available_artifacts": [
+              "benchmark_report",
+              "exported_ir",
+              "quantized_model",
+              "source_model_v1"
+            ]
+          }
+        ],
+        "provenance_invariant_holds": true,
+        "simulation_note": "Local mock plan validator, does not invoke real compiler binaries or GPU kernels"
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "[export, benchmark, quantize]",
+      "expected": "ValueError",
+      "status": "PASSED"
+    },
+    {
+      "input": "unknown artifact reference",
+      "expected": "ValueError",
+      "status": "PASSED"
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+}
