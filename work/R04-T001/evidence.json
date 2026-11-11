@@ -1,0 +1,66 @@
+{
+  "task_id": "R04-T001",
+  "issue": 1,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "one two three four",
+      "budget": 3,
+      "expected": {
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [
+          "four"
+        ],
+        "removed_count": 1,
+        "truncated": true
+      },
+      "actual": {
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [
+          "four"
+        ],
+        "removed_count": 1,
+        "truncated": true
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "",
+      "budget": 3,
+      "expected": {
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false
+      },
+      "actual": {
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "budget=-1",
+      "expected": "ValueError",
+      "actual": "ValueError",
+      "status": "PASSED"
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nOK\n"
+}
