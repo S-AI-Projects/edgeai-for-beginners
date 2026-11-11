@@ -1,0 +1,64 @@
+{
+  "task_id": "R04-T003",
+  "issue": 8,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "complete fixture",
+      "actual": {
+        "passed": true,
+        "executable_failures": [],
+        "config_failures": [],
+        "all_failures": [],
+        "diagnostics": {
+          "model_dir": "/opt/models",
+          "api_key": "[REDACTED]"
+        }
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "missing executable foundry",
+      "actual": {
+        "passed": false,
+        "executable_failures": [
+          "MISSING_EXECUTABLE: 'foundry' was not found."
+        ],
+        "config_failures": [],
+        "all_failures": [
+          "MISSING_EXECUTABLE: 'foundry' was not found."
+        ],
+        "diagnostics": {
+          "model_dir": "/opt/models",
+          "api_key": "[REDACTED]"
+        }
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "absent config api_key",
+      "actual": {
+        "passed": false,
+        "executable_failures": [],
+        "config_failures": [
+          "ABSENT_CONFIG: Key 'api_key' is missing from configuration."
+        ],
+        "all_failures": [
+          "ABSENT_CONFIG: Key 'api_key' is missing from configuration."
+        ],
+        "diagnostics": {
+          "model_dir": "/opt/models"
+        }
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "approach comparison",
+      "status": "PASSED",
+      "direct_equals_ref": true
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+}
