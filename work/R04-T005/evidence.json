@@ -1,0 +1,139 @@
+{
+  "task_id": "R04-T005",
+  "issue": 10,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": {
+        "os": "Windows 11",
+        "architecture": "ARM64",
+        "backend": "DirectML",
+        "capabilities": [
+          "NPU",
+          "DirectML",
+          "WindowsAppSDK"
+        ]
+      },
+      "actual": {
+        "compatible": true,
+        "mismatches": [],
+        "missing_capabilities": [],
+        "lesson_requirement_used": {
+          "lesson_source": "Module02/06.phisilica.md",
+          "target_model": "Phi-Silica",
+          "required_os": "Windows 11",
+          "required_architecture": "ARM64",
+          "required_backend": "DirectML",
+          "required_capabilities": [
+            "NPU",
+            "DirectML",
+            "WindowsAppSDK"
+          ]
+        },
+        "reported_profile": {
+          "os": "Windows 11",
+          "architecture": "ARM64",
+          "backend": "DirectML",
+          "capabilities": [
+            "NPU",
+            "DirectML",
+            "WindowsAppSDK"
+          ]
+        },
+        "mock_limitations": "This offline adapter verifies metadata only; it does not query physical silicon registers, measure NPU TOPS performance, or test DirectML hardware driver stability."
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": {
+        "os": "Windows 11",
+        "architecture": "x86_64",
+        "backend": "DirectML",
+        "capabilities": [
+          "NPU",
+          "DirectML",
+          "WindowsAppSDK"
+        ]
+      },
+      "actual": {
+        "compatible": false,
+        "mismatches": [
+          {
+            "field": "architecture",
+            "expected": "ARM64",
+            "actual": "x86_64",
+            "action": "Architecture mismatch: ARM64 required for native NPU pipeline"
+          }
+        ],
+        "missing_capabilities": [],
+        "lesson_requirement_used": {
+          "lesson_source": "Module02/06.phisilica.md",
+          "target_model": "Phi-Silica",
+          "required_os": "Windows 11",
+          "required_architecture": "ARM64",
+          "required_backend": "DirectML",
+          "required_capabilities": [
+            "NPU",
+            "DirectML",
+            "WindowsAppSDK"
+          ]
+        },
+        "reported_profile": {
+          "os": "Windows 11",
+          "architecture": "x86_64",
+          "backend": "DirectML",
+          "capabilities": [
+            "NPU",
+            "DirectML",
+            "WindowsAppSDK"
+          ]
+        },
+        "mock_limitations": "This offline adapter verifies metadata only; it does not query physical silicon registers, measure NPU TOPS performance, or test DirectML hardware driver stability."
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": {
+        "os": "Windows 11",
+        "architecture": "ARM64",
+        "backend": "DirectML",
+        "capabilities": [
+          "DirectML"
+        ]
+      },
+      "actual": {
+        "compatible": false,
+        "mismatches": [],
+        "missing_capabilities": [
+          "NPU",
+          "WindowsAppSDK"
+        ],
+        "lesson_requirement_used": {
+          "lesson_source": "Module02/06.phisilica.md",
+          "target_model": "Phi-Silica",
+          "required_os": "Windows 11",
+          "required_architecture": "ARM64",
+          "required_backend": "DirectML",
+          "required_capabilities": [
+            "NPU",
+            "DirectML",
+            "WindowsAppSDK"
+          ]
+        },
+        "reported_profile": {
+          "os": "Windows 11",
+          "architecture": "ARM64",
+          "backend": "DirectML",
+          "capabilities": [
+            "DirectML"
+          ]
+        },
+        "mock_limitations": "This offline adapter verifies metadata only; it does not query physical silicon registers, measure NPU TOPS performance, or test DirectML hardware driver stability."
+      },
+      "status": "PASSED"
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+}
