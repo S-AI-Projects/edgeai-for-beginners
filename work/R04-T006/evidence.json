@@ -1,0 +1,62 @@
+{
+  "task_id": "R04-T006",
+  "issue": 11,
+  "python_version": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2-arm64-arm-64bit-Mach-O",
+  "test_cases": [
+    {
+      "input": "one two three four",
+      "actual": {
+        "prompt": "one two three four",
+        "budget": 3,
+        "total_tokens": [
+          "one",
+          "two",
+          "three",
+          "four"
+        ],
+        "total_token_count": 4,
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [
+          "four"
+        ],
+        "removed_count": 1,
+        "truncated": true,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not model's production BPE tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "check": "before/after equivalence",
+      "status": "PASSED"
+    },
+    {
+      "input": "",
+      "actual": {
+        "prompt": "",
+        "budget": 3,
+        "total_tokens": [],
+        "total_token_count": 0,
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not model's production BPE tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "input": "budget=-1",
+      "expected": "ValueError",
+      "status": "PASSED"
+    }
+  ],
+  "unittest_exit_code": 0,
+  "unittest_stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+}
