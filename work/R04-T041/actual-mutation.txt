@@ -1,0 +1,76 @@
+FF.E.EF..F
+======================================================================
+ERROR: test_single_export_stage_is_accepted (test_example.BoundaryCases.test_single_export_stage_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 54, in test_single_export_stage_is_accepted
+    self.assertEqual(validate_plan(plan, STARTING_ARTIFACTS), ["export"])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut/example.py", line 61, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_export_quantize_benchmark_is_accepted (test_example.NormalCases.test_export_quantize_benchmark_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 9, in test_export_quantize_benchmark_is_accepted
+    validate_plan(good_plan(), STARTING_ARTIFACTS),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut/example.py", line 61, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+FAIL: test_duplicate_output_artifact_is_rejected (test_example.BoundaryCases.test_duplicate_output_artifact_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 82, in test_duplicate_output_artifact_is_rejected
+    self.assertEqual(ctx.exception.code, "DUPLICATE_ARTIFACT")
+AssertionError: 'OUT_OF_ORDER' != 'DUPLICATE_ARTIFACT'
+- OUT_OF_ORDER
++ DUPLICATE_ARTIFACT
+
+
+======================================================================
+FAIL: test_duplicate_stage_is_rejected (test_example.BoundaryCases.test_duplicate_stage_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 73, in test_duplicate_stage_is_rejected
+    self.assertEqual(ctx.exception.code, "DUPLICATE_STAGE")
+AssertionError: 'OUT_OF_ORDER' != 'DUPLICATE_STAGE'
+- OUT_OF_ORDER
++ DUPLICATE_STAGE
+
+
+======================================================================
+FAIL: test_artifact_from_a_later_stage_is_unknown (test_example.RejectedPlans.test_artifact_from_a_later_stage_is_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 48, in test_artifact_from_a_later_stage_is_unknown
+    self.assertRejected(plan, "UNKNOWN_ARTIFACT")
+  File "/tmp/mut/test_example.py", line 18, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'UNKNOWN_ARTIFACT'
+- OUT_OF_ORDER
++ UNKNOWN_ARTIFACT
+
+
+======================================================================
+FAIL: test_unknown_artifact_reference_is_rejected (test_example.RejectedPlans.test_unknown_artifact_reference_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut/test_example.py", line 40, in test_unknown_artifact_reference_is_rejected
+    self.assertRejected(plan, "UNKNOWN_ARTIFACT")
+  File "/tmp/mut/test_example.py", line 18, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'UNKNOWN_ARTIFACT'
+- OUT_OF_ORDER
++ UNKNOWN_ARTIFACT
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+FAILED (failures=4, errors=2)
+exit=1
