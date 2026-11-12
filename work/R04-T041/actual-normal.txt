@@ -1,0 +1,16 @@
+test_duplicate_output_artifact_is_rejected (test_example.BoundaryCases.test_duplicate_output_artifact_is_rejected) ... ok
+test_duplicate_stage_is_rejected (test_example.BoundaryCases.test_duplicate_stage_is_rejected) ... ok
+test_empty_plan_is_rejected (test_example.BoundaryCases.test_empty_plan_is_rejected) ... ok
+test_single_export_stage_is_accepted (test_example.BoundaryCases.test_single_export_stage_is_accepted) ... ok
+test_unknown_stage_name_is_rejected (test_example.BoundaryCases.test_unknown_stage_name_is_rejected) ... ok
+test_export_quantize_benchmark_is_accepted (test_example.NormalCases.test_export_quantize_benchmark_is_accepted) ... ok
+test_artifact_from_a_later_stage_is_unknown (test_example.RejectedPlans.test_artifact_from_a_later_stage_is_unknown) ... ok
+test_benchmark_before_quantize_is_rejected (test_example.RejectedPlans.test_benchmark_before_quantize_is_rejected) ... ok
+test_quantize_before_export_is_rejected (test_example.RejectedPlans.test_quantize_before_export_is_rejected) ... ok
+test_unknown_artifact_reference_is_rejected (test_example.RejectedPlans.test_unknown_artifact_reference_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+exit=0

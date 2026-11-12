@@ -1,0 +1,4 @@
+starting artifacts: ['source_model']
+good plan: ACCEPTED ['export', 'quantize', 'benchmark']
+benchmark before quantize: REJECTED OUT_OF_ORDER: 'quantize' cannot come after 'benchmark'
+unknown artifact: REJECTED UNKNOWN_ARTIFACT: stage 'quantize' reads 'ov_int8_typo', which no earlier stage produced
