@@ -1,0 +1,214 @@
+{
+  "task_id": "R04-T051",
+  "issue": 6,
+  "module": "Module03/03.DeployingSLMinCloud.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "overflow_truncation",
+      "input": {
+        "prompt": "one two three four",
+        "budget": 3
+      },
+      "expected": {
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [
+          "four"
+        ],
+        "removed_count": 1,
+        "truncated": true,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not the model's real tokenizer"
+      },
+      "actual": {
+        "prompt": "one two three four",
+        "budget": 3,
+        "total_tokens": [
+          "one",
+          "two",
+          "three",
+          "four"
+        ],
+        "total_token_count": 4,
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [
+          "four"
+        ],
+        "removed_count": 1,
+        "truncated": true,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not the model's real tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "empty_input_retains_none",
+      "input": {
+        "prompt": "",
+        "budget": 3
+      },
+      "expected": {
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false
+      },
+      "actual": {
+        "prompt": "",
+        "budget": 3,
+        "total_tokens": [],
+        "total_token_count": 0,
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not the model's real tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "whitespace_only_retains_none",
+      "input": {
+        "prompt": "   \t\n   ",
+        "budget": 3
+      },
+      "expected": {
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false
+      },
+      "actual": {
+        "prompt": "   \t\n   ",
+        "budget": 3,
+        "total_tokens": [],
+        "total_token_count": 0,
+        "retained_tokens": [],
+        "retained_count": 0,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not the model's real tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "reject_negative_budget",
+      "input": {
+        "budget": -1
+      },
+      "expected": "ValueError: Token budget cannot be negative: -1",
+      "actual": "ValueError: Token budget cannot be negative: -1",
+      "status": "PASSED"
+    },
+    {
+      "name": "exact_capacity_boundary",
+      "input": {
+        "prompt": "one two three",
+        "budget": 3
+      },
+      "expected": {
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false
+      },
+      "actual": {
+        "prompt": "one two three",
+        "budget": 3,
+        "total_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "total_token_count": 3,
+        "retained_tokens": [
+          "one",
+          "two",
+          "three"
+        ],
+        "retained_count": 3,
+        "removed_tokens": [],
+        "removed_count": 0,
+        "truncated": false,
+        "tokenizer_note": "Teaching approximation (whitespace tokenization), not the model's real tokenizer"
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "teaching_approximation_label",
+      "input": {
+        "prompt": "test",
+        "budget": 3
+      },
+      "expected": "Teaching approximation (whitespace tokenization), not the model's real tokenizer",
+      "actual": "Teaching approximation (whitespace tokenization), not the model's real tokenizer",
+      "status": "PASSED"
+    },
+    {
+      "name": "concept_mapping_coverage",
+      "input": [
+        "prompt",
+        "budget",
+        "total_tokens",
+        "total_token_count",
+        "retained_tokens",
+        "retained_count",
+        "removed_tokens",
+        "removed_count",
+        "truncated",
+        "tokenizer_note"
+      ],
+      "expected": "All report keys mapped to containerized cloud concepts",
+      "actual": {
+        "budget": "Container sequence limit / memory budget (e.g., vLLM --max-model-len)",
+        "prompt": "Incoming raw inference query submitted to the container endpoint",
+        "total_tokens": "Extracted tokens from incoming query prior to admission",
+        "total_token_count": "Total token workload before applying admission limits",
+        "retained_tokens": "Admitted token slice passed to the container inference engine",
+        "retained_count": "Sequence length sent to model worker context buffer",
+        "removed_tokens": "Tokens dropped to prevent container buffer overflow or OOM",
+        "removed_count": "Explicit count of discarded tokens for telemetry and auditing",
+        "truncated": "Preflight admission status flag (True if payload was pruned)",
+        "tokenizer_note": "Pedagogical transparency marking local approximation vs real BPE"
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Deliberate wrong result check",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module03/applied-labs/r04-t051 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
