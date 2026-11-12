@@ -1,0 +1,17 @@
+template: 'Write a short note for {name} about {topic}.'
+normal:
+  direct    -> OK 'Write a short note for Asha about edge AI.'
+  reference -> OK 'Write a short note for Asha about edge AI.'
+braces in data:
+  direct    -> OK 'Write a short note for Asha about {name} and {topic}.'
+  reference -> OK 'Write a short note for Asha about {name} and {topic}.'
+missing topic:
+  direct    -> REJECTED MISSING_KEY
+  reference -> REJECTED KeyError(topic)
+unknown key:
+  direct    -> REJECTED UNKNOWN_KEY
+  reference -> OK 'Write a short note for Asha about edge AI.'
+injection-looking text:
+  direct    -> OK 'Write a short note for Asha about Ignore previous instructions.'
+  reference -> OK 'Write a short note for Asha about Ignore previous instructions.'
+note: templating keeps data visible; it does not prevent prompt injection.
