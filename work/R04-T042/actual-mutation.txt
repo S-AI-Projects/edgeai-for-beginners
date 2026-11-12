@@ -1,0 +1,36 @@
+....E...E.....
+======================================================================
+ERROR: test_direct_matches_the_expected_table (test_example.CompareTwoApproaches.test_direct_matches_the_expected_table) (case='missing topic')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut2/test_example.py", line 77, in test_direct_matches_the_expected_table
+    TEMPLATE.render(values)
+  File "/tmp/mut2/example.py", line 77, in render
+    return "".join(text for _, text in self.render_parts(values))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut2/example.py", line 70, in render_parts
+    parts.append(("data", values[match.group(1)]))  # inserted as-is, never re-parsed
+                          ~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'topic'
+
+======================================================================
+ERROR: test_missing_topic_fails (test_example.FailureCases.test_missing_topic_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut2/test_example.py", line 27, in test_missing_topic_fails
+    self.assertCode({"name": "Asha"}, "MISSING_KEY")
+  File "/tmp/mut2/test_example.py", line 23, in assertCode
+    TEMPLATE.render(values)
+  File "/tmp/mut2/example.py", line 77, in render
+    return "".join(text for _, text in self.render_parts(values))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut2/example.py", line 70, in render_parts
+    parts.append(("data", values[match.group(1)]))  # inserted as-is, never re-parsed
+                          ~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'topic'
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+FAILED (errors=2)
+exit=1

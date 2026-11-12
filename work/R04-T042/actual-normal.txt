@@ -1,0 +1,20 @@
+test_braces_inside_user_data_stay_literal (test_example.BoundaryCases.test_braces_inside_user_data_stay_literal) ... ok
+test_empty_string_value_is_allowed (test_example.BoundaryCases.test_empty_string_value_is_allowed) ... ok
+test_injection_looking_text_is_passed_through_unchanged (test_example.BoundaryCases.test_injection_looking_text_is_passed_through_unchanged) ... ok
+test_user_data_cannot_change_the_instruction_segments (test_example.BoundaryCases.test_user_data_cannot_change_the_instruction_segments) ... ok
+test_direct_matches_the_expected_table (test_example.CompareTwoApproaches.test_direct_matches_the_expected_table) ... ok
+test_reference_catches_missing_but_not_unknown_keys (test_example.CompareTwoApproaches.test_reference_catches_missing_but_not_unknown_keys) ... ok
+test_reference_str_format_agrees_where_it_succeeds (test_example.CompareTwoApproaches.test_reference_str_format_agrees_where_it_succeeds) ... ok
+test_declared_but_unused_variable_is_rejected (test_example.FailureCases.test_declared_but_unused_variable_is_rejected) ... ok
+test_missing_topic_fails (test_example.FailureCases.test_missing_topic_fails) ... ok
+test_non_string_value_fails (test_example.FailureCases.test_non_string_value_fails) ... ok
+test_stray_brace_in_template_is_rejected (test_example.FailureCases.test_stray_brace_in_template_is_rejected) ... ok
+test_unknown_key_fails (test_example.FailureCases.test_unknown_key_fails) ... ok
+test_name_and_topic_render_supplied_values (test_example.NormalCases.test_name_and_topic_render_supplied_values) ... ok
+test_user_data_is_a_distinct_segment (test_example.NormalCases.test_user_data_is_a_distinct_segment) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK
+exit=0
