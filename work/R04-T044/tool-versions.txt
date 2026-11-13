@@ -1,0 +1,3 @@
+python: Python 3.12.3
+unittest: stdlib
+cmd: python3 -m unittest discover -s Module04/applied-labs/r04-t044 -p "test_*.py"

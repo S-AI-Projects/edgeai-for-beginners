@@ -1,0 +1,267 @@
+EEEEEEEEEEEEEEE.F.F..FFF.
+======================================================================
+ERROR: test_export_quantize_benchmark_is_accepted (test_example.AcceptedPlans.test_export_quantize_benchmark_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 21, in test_export_quantize_benchmark_is_accepted
+    self.assertEqual(validate_plan(good_plan(), STARTING_ARTIFACTS),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_export_then_quantize_only_is_accepted (test_example.AcceptedPlans.test_export_then_quantize_only_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 26, in test_export_then_quantize_only_is_accepted
+    self.assertEqual(validate_plan(plan, STARTING_ARTIFACTS), ["export", "quantize"])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_single_export_stage_is_accepted (test_example.AcceptedPlans.test_single_export_stage_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 29, in test_single_export_stage_is_accepted
+    self.assertEqual(validate_plan(good_plan()[:1], STARTING_ARTIFACTS), ["export"])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_adapter_failure_stops_later_stages (test_example.AdapterContractFailures.test_adapter_failure_stops_later_stages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 145, in test_adapter_failure_stops_later_stages
+    execute_plan(good_plan(), STARTING_ARTIFACTS, FlakyAdapter(inner, "quantize"))
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_non_mapping_or_empty_descriptor_is_rejected (test_example.AdapterContractFailures.test_non_mapping_or_empty_descriptor_is_rejected) (<subtest>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 139, in test_non_mapping_or_empty_descriptor_is_rejected
+    execute_plan(good_plan()[:1], STARTING_ARTIFACTS, bad)
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_non_mapping_or_empty_descriptor_is_rejected (test_example.AdapterContractFailures.test_non_mapping_or_empty_descriptor_is_rejected) (<subtest>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 139, in test_non_mapping_or_empty_descriptor_is_rejected
+    execute_plan(good_plan()[:1], STARTING_ARTIFACTS, bad)
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_wrong_output_ids_are_rejected_and_progress_is_kept (test_example.AdapterContractFailures.test_wrong_output_ids_are_rejected_and_progress_is_kept)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 131, in test_wrong_output_ids_are_rejected_and_progress_is_kept
+    execute_plan(good_plan(), STARTING_ARTIFACTS, runner)
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_adapter_receives_only_the_declared_inputs (test_example.CallableInterface.test_adapter_receives_only_the_declared_inputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 105, in test_adapter_receives_only_the_declared_inputs
+    execute_plan(good_plan(), STARTING_ARTIFACTS, spy)
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_any_callable_can_stand_in_for_the_service (test_example.CallableInterface.test_any_callable_can_stand_in_for_the_service)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 94, in test_any_callable_can_stand_in_for_the_service
+    record = execute_plan(good_plan(), STARTING_ARTIFACTS, spy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_descriptors_are_labelled_as_simulated (test_example.CallableInterface.test_descriptors_are_labelled_as_simulated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 120, in test_descriptors_are_labelled_as_simulated
+    record = execute_plan(good_plan(), STARTING_ARTIFACTS, LocalOfflineAdapter())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_different_inputs_give_different_descriptors (test_example.CallableInterface.test_different_inputs_give_different_descriptors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 114, in test_different_inputs_give_different_descriptors
+    base = execute_plan(good_plan(), STARTING_ARTIFACTS, LocalOfflineAdapter())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_each_stage_records_its_input_and_output_ids (test_example.CallableInterface.test_each_stage_records_its_input_and_output_ids)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 86, in test_each_stage_records_its_input_and_output_ids
+    record = execute_plan(good_plan(), STARTING_ARTIFACTS, LocalOfflineAdapter())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_local_adapter_is_deterministic (test_example.CallableInterface.test_local_adapter_is_deterministic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 109, in test_local_adapter_is_deterministic
+    a = execute_plan(good_plan(), STARTING_ARTIFACTS, LocalOfflineAdapter())
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_local_adapter_runs_the_plan_in_order (test_example.CallableInterface.test_local_adapter_runs_the_plan_in_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 80, in test_local_adapter_runs_the_plan_in_order
+    record = execute_plan(good_plan(), STARTING_ARTIFACTS, adapter)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+ERROR: test_plain_function_works_too (test_example.CallableInterface.test_plain_function_works_too)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 101, in test_plain_function_works_too
+    self.assertEqual(len(execute_plan(good_plan(), STARTING_ARTIFACTS, runner).stages), 3)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 125, in execute_plan
+    validate_plan(plan, starting_artifacts)  # no runner call can happen before this passes
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/mut4/example.py", line 98, in validate_plan
+    raise PlanError(
+example.PlanError: OUT_OF_ORDER: 'export' cannot come after 'benchmark'
+
+======================================================================
+FAIL: test_artifact_from_a_later_stage_is_unknown (test_example.RejectedPlans.test_artifact_from_a_later_stage_is_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 54, in test_artifact_from_a_later_stage_is_unknown
+    self.assertRejected(plan, "UNKNOWN_ARTIFACT")
+  File "/tmp/mut4/test_example.py", line 37, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'UNKNOWN_ARTIFACT'
+- OUT_OF_ORDER
++ UNKNOWN_ARTIFACT
+
+
+======================================================================
+FAIL: test_duplicate_stage_is_rejected (test_example.RejectedPlans.test_duplicate_stage_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 65, in test_duplicate_stage_is_rejected
+    self.assertRejected(plan, "DUPLICATE_STAGE")
+  File "/tmp/mut4/test_example.py", line 37, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'DUPLICATE_STAGE'
+- OUT_OF_ORDER
++ DUPLICATE_STAGE
+
+
+======================================================================
+FAIL: test_recreating_an_existing_artifact_is_rejected (test_example.RejectedPlans.test_recreating_an_existing_artifact_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 74, in test_recreating_an_existing_artifact_is_rejected
+    self.assertRejected(plan, "DUPLICATE_ARTIFACT")
+  File "/tmp/mut4/test_example.py", line 37, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'DUPLICATE_ARTIFACT'
+- OUT_OF_ORDER
++ DUPLICATE_ARTIFACT
+
+
+======================================================================
+FAIL: test_stage_without_inputs_or_outputs_is_rejected (test_example.RejectedPlans.test_stage_without_inputs_or_outputs_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 68, in test_stage_without_inputs_or_outputs_is_rejected
+    self.assertRejected([Stage("export", (), ("ov_ir",))], "MISSING_INPUT")
+  File "/tmp/mut4/test_example.py", line 37, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'MISSING_INPUT'
+- OUT_OF_ORDER
++ MISSING_INPUT
+
+
+======================================================================
+FAIL: test_unknown_artifact_reference_is_rejected (test_example.RejectedPlans.test_unknown_artifact_reference_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut4/test_example.py", line 49, in test_unknown_artifact_reference_is_rejected
+    self.assertRejected(unknown_artifact_plan(), "UNKNOWN_ARTIFACT")
+  File "/tmp/mut4/test_example.py", line 37, in assertRejected
+    self.assertEqual(ctx.exception.code, code)
+AssertionError: 'OUT_OF_ORDER' != 'UNKNOWN_ARTIFACT'
+- OUT_OF_ORDER
++ UNKNOWN_ARTIFACT
+
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.004s
+
+FAILED (failures=5, errors=15)
+exit=1

@@ -1,0 +1,14 @@
+starting artifacts: ['source_model']
+good plan [export, quantize, benchmark]: ACCEPTED and run through LocalOfflineAdapter
+  export: reads ['source_model'] -> writes ov_ir = sim-export-05aa1b72
+  quantize: reads ['ov_ir'] -> writes ov_int8 = sim-quantize-d9759e1c
+  benchmark: reads ['ov_int8'] -> writes bench_report = sim-benchmark-5a2e77c1
+  adapter calls: ['export', 'quantize', 'benchmark']
+benchmark before quantize: REJECTED OUT_OF_ORDER (adapter calls: 0)
+unknown artifact reference: REJECTED UNKNOWN_ARTIFACT (adapter calls: 0)
+adapter fails at quantize: ADAPTER_FAILED; stages completed before it: ['export']
+not established by this mock:
+  - That OpenVINO, NNCF or any converter can actually export or quantize a given model.
+  - Any real latency, throughput, memory or accuracy number: a benchmark output here is just a label.
+  - Real service failures: timeouts, partial writes, version mismatches, missing devices or credentials.
+  - That the artifacts are valid IR/model files or are compatible with any particular device.

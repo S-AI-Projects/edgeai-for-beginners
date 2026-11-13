@@ -1,0 +1,30 @@
+test_export_quantize_benchmark_is_accepted (test_example.AcceptedPlans.test_export_quantize_benchmark_is_accepted) ... ok
+test_export_then_quantize_only_is_accepted (test_example.AcceptedPlans.test_export_then_quantize_only_is_accepted) ... ok
+test_single_export_stage_is_accepted (test_example.AcceptedPlans.test_single_export_stage_is_accepted) ... ok
+test_adapter_failure_stops_later_stages (test_example.AdapterContractFailures.test_adapter_failure_stops_later_stages) ... ok
+test_non_mapping_or_empty_descriptor_is_rejected (test_example.AdapterContractFailures.test_non_mapping_or_empty_descriptor_is_rejected) ... ok
+test_wrong_output_ids_are_rejected_and_progress_is_kept (test_example.AdapterContractFailures.test_wrong_output_ids_are_rejected_and_progress_is_kept) ... ok
+test_adapter_receives_only_the_declared_inputs (test_example.CallableInterface.test_adapter_receives_only_the_declared_inputs) ... ok
+test_any_callable_can_stand_in_for_the_service (test_example.CallableInterface.test_any_callable_can_stand_in_for_the_service) ... ok
+test_descriptors_are_labelled_as_simulated (test_example.CallableInterface.test_descriptors_are_labelled_as_simulated) ... ok
+test_different_inputs_give_different_descriptors (test_example.CallableInterface.test_different_inputs_give_different_descriptors) ... ok
+test_each_stage_records_its_input_and_output_ids (test_example.CallableInterface.test_each_stage_records_its_input_and_output_ids) ... ok
+test_local_adapter_is_deterministic (test_example.CallableInterface.test_local_adapter_is_deterministic) ... ok
+test_local_adapter_runs_the_plan_in_order (test_example.CallableInterface.test_local_adapter_runs_the_plan_in_order) ... ok
+test_plain_function_works_too (test_example.CallableInterface.test_plain_function_works_too) ... ok
+test_the_mock_lists_what_it_does_not_establish (test_example.MockLimits.test_the_mock_lists_what_it_does_not_establish) ... ok
+test_artifact_from_a_later_stage_is_unknown (test_example.RejectedPlans.test_artifact_from_a_later_stage_is_unknown) ... ok
+test_benchmark_before_quantize_is_rejected (test_example.RejectedPlans.test_benchmark_before_quantize_is_rejected) ... ok
+test_duplicate_stage_is_rejected (test_example.RejectedPlans.test_duplicate_stage_is_rejected) ... ok
+test_empty_plan_is_rejected (test_example.RejectedPlans.test_empty_plan_is_rejected) ... ok
+test_quantize_before_export_is_rejected (test_example.RejectedPlans.test_quantize_before_export_is_rejected) ... ok
+test_recreating_an_existing_artifact_is_rejected (test_example.RejectedPlans.test_recreating_an_existing_artifact_is_rejected) ... ok
+test_stage_without_inputs_or_outputs_is_rejected (test_example.RejectedPlans.test_stage_without_inputs_or_outputs_is_rejected) ... ok
+test_unknown_artifact_reference_is_rejected (test_example.RejectedPlans.test_unknown_artifact_reference_is_rejected) ... ok
+test_unknown_stage_is_rejected (test_example.RejectedPlans.test_unknown_stage_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.001s
+
+OK
+exit=0
