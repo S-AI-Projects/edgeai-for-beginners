@@ -1,0 +1,20 @@
+floor = 1e-12   (ln(2) = 0.693147)
+teacher [1,0] vs student [0.5,0.5]:
+  step 0: p=1.0000 q=0.5000 q_floored=5.0e-01 term=0.693147 running=0.693147
+  step 1: p=0.0000 q=0.5000 q_floored=5.0e-01 term=0.000000 running=0.693147
+  result=0.693147  invariant holds
+identical one-hot [1,0]:
+  step 0: p=1.0000 q=1.0000 q_floored=1.0e+00 term=0.000000 running=0.000000
+  step 1: p=0.0000 q=0.0000 q_floored=1.0e-12 term=0.000000 running=0.000000
+  result=0.000000  invariant holds
+floor in action: teacher [1,0] vs student [0,1]:
+  step 0: p=1.0000 q=0.0000 q_floored=1.0e-12 term=27.631021 running=27.631021
+  step 1: p=0.0000 q=1.0000 q_floored=1.0e+00 term=0.000000 running=27.631021
+  result=27.631021  invariant holds
+teacher not normalized:
+  REJECTED NOT_NORMALIZED
+length mismatch:
+  REJECTED LENGTH_MISMATCH
+negative probability:
+  REJECTED NEGATIVE_PROBABILITY
+note: probabilities are typed in by hand; this is a simulation, not a trained model.

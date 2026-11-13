@@ -1,0 +1,47 @@
+FF.............FF........F
+======================================================================
+FAIL: test_custom_floor_changes_that_result (test_example.BoundaryCases.test_custom_floor_changes_that_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut3/test_example.py", line 34, in test_custom_floor_changes_that_result
+    self.assertAlmostEqual(cross_entropy([1, 0], [0, 1], floor=1e-6), 13.815510557964274, places=9)
+AssertionError: 19.931568569324174 != 13.815510557964274 within 9 places (6.1160580113599 difference)
+
+======================================================================
+FAIL: test_floor_keeps_the_result_finite_when_student_gives_zero (test_example.BoundaryCases.test_floor_keeps_the_result_finite_when_student_gives_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut3/test_example.py", line 31, in test_floor_keeps_the_result_finite_when_student_gives_zero
+    self.assertAlmostEqual(result, 27.631021115928547, places=9)  # -ln(1e-12)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 39.86313713864835 != 27.631021115928547 within 9 places (12.2321160227198 difference)
+
+======================================================================
+FAIL: test_soft_teacher_matches_a_hand_calculation (test_example.NormalCases.test_soft_teacher_matches_a_hand_calculation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut3/test_example.py", line 19, in test_soft_teacher_matches_a_hand_calculation
+    self.assertAlmostEqual(cross_entropy([0.25, 0.75], [0.25, 0.75]), 0.5623351446188083, places=12)
+AssertionError: 0.8112781244591328 != 0.5623351446188083 within 12 places (0.24894297984032454 difference)
+
+======================================================================
+FAIL: test_teacher_one_zero_student_half_half_is_ln2 (test_example.NormalCases.test_teacher_one_zero_student_half_half_is_ln2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut3/test_example.py", line 11, in test_teacher_one_zero_student_half_half_is_ln2
+    self.assertAlmostEqual(cross_entropy([1, 0], [0.5, 0.5]), math.log(2), places=12)
+AssertionError: 1.0 != 0.6931471805599453 within 12 places (0.3068528194400547 difference)
+
+======================================================================
+FAIL: test_state_is_recorded_after_each_step (test_example.StateTraceAndInvariant.test_state_is_recorded_after_each_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut3/test_example.py", line 89, in test_state_is_recorded_after_each_step
+    self.assertAlmostEqual(trace.steps[0].term, 0.25 * math.log(2), places=12)
+AssertionError: 0.25 != 0.17328679513998632 within 12 places (0.07671320486001368 difference)
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.002s
+
+FAILED (failures=5)
+exit=1

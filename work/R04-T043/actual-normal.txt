@@ -1,0 +1,32 @@
+test_custom_floor_changes_that_result (test_example.BoundaryCases.test_custom_floor_changes_that_result) ... ok
+test_floor_keeps_the_result_finite_when_student_gives_zero (test_example.BoundaryCases.test_floor_keeps_the_result_finite_when_student_gives_zero) ... ok
+test_single_class_distribution (test_example.BoundaryCases.test_single_class_distribution) ... ok
+test_sum_within_tolerance_is_accepted (test_example.BoundaryCases.test_sum_within_tolerance_is_accepted) ... ok
+test_zero_teacher_probability_contributes_exactly_zero (test_example.BoundaryCases.test_zero_teacher_probability_contributes_exactly_zero) ... ok
+test_bad_floor (test_example.FailureCases.test_bad_floor) ... ok
+test_empty (test_example.FailureCases.test_empty) ... ok
+test_length_mismatch (test_example.FailureCases.test_length_mismatch) ... ok
+test_negative_probability (test_example.FailureCases.test_negative_probability) ... ok
+test_non_numeric (test_example.FailureCases.test_non_numeric) ... ok
+test_not_finite (test_example.FailureCases.test_not_finite) ... ok
+test_student_not_normalized (test_example.FailureCases.test_student_not_normalized) ... ok
+test_teacher_not_normalized (test_example.FailureCases.test_teacher_not_normalized) ... ok
+test_identical_one_hot_distributions_give_zero (test_example.NormalCases.test_identical_one_hot_distributions_give_zero) ... ok
+test_result_is_deterministic (test_example.NormalCases.test_result_is_deterministic) ... ok
+test_soft_teacher_matches_a_hand_calculation (test_example.NormalCases.test_soft_teacher_matches_a_hand_calculation) ... ok
+test_teacher_one_zero_student_half_half_is_ln2 (test_example.NormalCases.test_teacher_one_zero_student_half_half_is_ln2) ... ok
+test_demo_cases_are_consistent_with_the_contract (test_example.StateTraceAndInvariant.test_demo_cases_are_consistent_with_the_contract) ... ok
+test_floor_is_visible_in_the_state (test_example.StateTraceAndInvariant.test_floor_is_visible_in_the_state) ... ok
+test_invariant_check_catches_a_corrupted_step (test_example.StateTraceAndInvariant.test_invariant_check_catches_a_corrupted_step) ... ok
+test_invariant_check_catches_a_decreasing_running_total (test_example.StateTraceAndInvariant.test_invariant_check_catches_a_decreasing_running_total) ... ok
+test_invariant_check_catches_a_wrong_final_result (test_example.StateTraceAndInvariant.test_invariant_check_catches_a_wrong_final_result) ... ok
+test_invariant_holds_for_valid_fixtures (test_example.StateTraceAndInvariant.test_invariant_holds_for_valid_fixtures) ... ok
+test_result_equals_last_running_total (test_example.StateTraceAndInvariant.test_result_equals_last_running_total) ... ok
+test_running_totals_never_decrease_and_terms_are_non_negative (test_example.StateTraceAndInvariant.test_running_totals_never_decrease_and_terms_are_non_negative) ... ok
+test_state_is_recorded_after_each_step (test_example.StateTraceAndInvariant.test_state_is_recorded_after_each_step) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.001s
+
+OK
+exit=0
