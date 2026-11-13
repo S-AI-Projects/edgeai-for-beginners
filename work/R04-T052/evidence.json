@@ -1,0 +1,124 @@
+{
+  "task_id": "R04-T052",
+  "issue": 52,
+  "module": "Module06/03.IntroduceMCP.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "overflow_retention_a_b_c_d",
+      "inputs": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "capacity": 3,
+      "expected": [
+        "B",
+        "C",
+        "D"
+      ],
+      "actual": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "name": "defensive_copy_immutability",
+      "action": "Expose list, append, pop, and clear",
+      "expected": [
+        "B",
+        "C",
+        "D"
+      ],
+      "actual": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "name": "smallest_valid_cases",
+      "expected": {
+        "empty": [],
+        "single": [
+          "A"
+        ],
+        "capacity_1": [
+          "SECOND"
+        ]
+      },
+      "actual": {
+        "empty": [],
+        "single": [
+          "A"
+        ],
+        "capacity_1": [
+          "SECOND"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "boundary_decision_eviction",
+      "expected": {
+        "at_boundary_evicted": null,
+        "overflow_evicted": "A"
+      },
+      "actual": {
+        "at_boundary_evicted": null,
+        "overflow_evicted": "A"
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "invalid_cases_rejection",
+      "expected": [
+        "capacity_0_rejected",
+        "none_rejected",
+        "empty_whitespace_rejected"
+      ],
+      "actual": [
+        "capacity_0_rejected",
+        "none_rejected",
+        "empty_whitespace_rejected"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "name": "boundary_decision_and_mapping",
+      "expected": {
+        "policy": "FIFO_SLIDING_WINDOW",
+        "has_concept_mapping": true
+      },
+      "actual": {
+        "policy": "FIFO_SLIDING_WINDOW",
+        "has_concept_mapping": true
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module06/applied-labs/r04-t052 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
