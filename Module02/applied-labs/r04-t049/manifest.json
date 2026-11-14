@@ -1,0 +1,44 @@
+{
+  "lesson": "Module02/06.phisilica.md",
+  "section": "Understanding the Specialized NPU Hardware, Design Philosophy, Windows ML Integration, Windows App SDK and Hardware Requirements",
+  "source": "https://github.com/microsoft/edgeai-for-beginners/blob/e88f123a4bb5796594919db3a13257c429d1288c/Module02/06.phisilica.md",
+  "requirements": [
+    {
+      "field": "os_name",
+      "kind": "one_of",
+      "expected": ["Windows 11"],
+      "lesson_quotes": ["Windows 11 Copilot+ PCs"],
+      "evaluation": {"correct": "Windows 11", "wrong": "Windows 10"}
+    },
+    {
+      "field": "architecture",
+      "kind": "one_of",
+      "expected": ["npu"],
+      "lesson_quotes": [
+        "NPU-First Architecture",
+        "Optimal performance requires a Windows Copilot+ PC with NPU hardware"
+      ],
+      "evaluation": {"correct": "npu", "wrong": "cpu"}
+    },
+    {
+      "field": "backend",
+      "kind": "one_of",
+      "expected": ["windows-ml", "directml"],
+      "lesson_quotes": ["Windows ML Runtime", "DirectML Acceleration"],
+      "evaluation": {"correct": "windows-ml", "wrong": "cuda"}
+    },
+    {
+      "field": "windows_app_sdk",
+      "kind": "flag",
+      "expected": true,
+      "lesson_quotes": ["Developers can access Phi-Silica capabilities through the Windows App SDK"],
+      "evaluation": {"correct": true, "wrong": false}
+    }
+  ],
+  "lesson_unknowns": [
+    "Windows 11 build or version number (the lesson says only Windows 11)",
+    "CPU instruction set, NPU performance floor, RAM and disk space",
+    "Windows App SDK version",
+    "which devices count as Copilot+ PCs"
+  ]
+}

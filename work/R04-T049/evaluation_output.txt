@@ -1,0 +1,10 @@
+lesson check: all 6 quoted requirement(s) found in Module02/06.phisilica.md
+corpus: 256 generated fixtures (4 fields x 4 states: correct, wrong, missing-but-correct, missing-but-wrong); 16 are truly compatible
+policy        decided  undecided  correct  false_pass  false_fail  coverage  error_rate
+report            176         80      176           0           0     68.8%        0.0%
+assume_pass       256          0      191          65           0    100.0%       25.4%
+assume_fail       256          0      241           0          15    100.0%        5.9%
+trade-off: reporting missing fields as unknown makes 0 wrong decisions and leaves 80 undecided; guessing decides all 256 but makes 65 false passes (assume_pass) or 15 false fails (assume_fail)
+scope: counts over generated fixtures only; no model accuracy, speed or power is measured
+check: the contract policy (report) made 0 wrong decision(s): OK
+exit code: 0
