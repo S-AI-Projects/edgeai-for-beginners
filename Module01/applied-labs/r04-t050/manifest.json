@@ -1,0 +1,55 @@
+{
+  "manifest_version": 1,
+  "profile": "Windows AI PC - Qualcomm Snapdragon X Elite/Plus (as presented in the lesson)",
+  "lesson": {
+    "file": "Module01/04.EdgeDeployment.md",
+    "title": "Section 4: Edge AI Deployment Hardware Platforms",
+    "commit": "e88f123a4bb5796594919db3a13257c429d1288c"
+  },
+  "rules": [
+    {
+      "id": "os_name",
+      "field": "os_name",
+      "kind": "equals",
+      "expected": "Windows",
+      "lesson_section": "Hardware Platform Options for Edge AI > Windows AI PCs (introduction)",
+      "lesson_says": "The lesson presents Windows AI PCs and Windows Copilot+ PCs.",
+      "on_failure": "This profile is a Windows AI PC."
+    },
+    {
+      "id": "architecture",
+      "field": "cpu_family",
+      "kind": "equals",
+      "expected": "Qualcomm Oryon",
+      "lesson_section": "Windows AI PCs > Qualcomm Snapdragon X Elite/Plus, CPU bullet",
+      "lesson_says": "This platform's CPU is the Qualcomm Oryon CPU (up to 12 cores).",
+      "on_failure": "This profile is the Snapdragon X Elite/Plus platform; Intel Core Ultra and AMD Ryzen AI are separate platforms in the lesson, not this profile."
+    },
+    {
+      "id": "npu_tops",
+      "field": "npu_tops",
+      "kind": "min_number",
+      "minimum": 45,
+      "inclusive": true,
+      "lesson_figure": "45+",
+      "boundary_note": "The lesson writes '45+ TOPS'. This check reads '45+' as 45 or more (inclusive), so exactly 45 passes and anything below 45 fails; there is no rounding or tolerance.",
+      "lesson_section": "Windows AI PCs > Qualcomm Snapdragon X Elite/Plus, Hexagon NPU bullet",
+      "lesson_says": "The lesson gives the Hexagon NPU as 45 or more TOPS.",
+      "on_failure": "Use a platform whose NPU is at least 45 TOPS."
+    },
+    {
+      "id": "backend",
+      "field": "backend",
+      "kind": "equals",
+      "expected": "DirectML",
+      "lesson_section": "Windows AI PCs > Development Approach; Resources for Developers > Tools and SDKs",
+      "lesson_says": "The lesson says Windows AI PCs use the Windows developer platform and DirectML.",
+      "on_failure": "The lesson's development approach for this platform uses DirectML."
+    }
+  ],
+  "unknowns": [
+    "The lesson gives no minimum Windows version, RAM or storage for these PCs, so none is checked.",
+    "The lesson names no instruction-set (Arm or x86) for the Oryon CPU, so 'architecture' means the CPU family the lesson names.",
+    "The 45 TOPS figure is stated in the lesson; this checker only compares a number it is given and measures nothing."
+  ]
+}

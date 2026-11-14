@@ -1,0 +1,40 @@
+== case 1 - smallest valid: only the four required fields, npu_tops exactly 45
+[ OK ] os_name: Windows (required: Windows)
+[ OK ] architecture: Qualcomm Oryon (required: Qualcomm Oryon)
+[ OK ] npu_tops: 45 (required: >= 45) - exactly on the boundary, which passes
+[ OK ] backend: DirectML (required: DirectML)
+RESULT: PASSED - 4 of 4 checks ok
+
+== case 2 - boundary: npu_tops just below 45 (44.9)
+[ OK ] os_name: Windows (required: Windows)
+[ OK ] architecture: Qualcomm Oryon (required: Qualcomm Oryon)
+[FAIL] npu_tops: MISMATCH on field 'npu_tops': observed 44.9, required >= 45 -> The lesson writes '45+ TOPS'. This check reads '45+' as 45 or more (inclusive), so exactly 45 passes and anything below 45 fails; there is no rounding or tolerance.
+[ OK ] backend: DirectML (required: DirectML)
+RESULT: FAILED - 1 of 4 checks need attention
+
+== case 3 - boundary: npu_tops 0 (a valid number, but below the minimum)
+[ OK ] os_name: Windows (required: Windows)
+[ OK ] architecture: Qualcomm Oryon (required: Qualcomm Oryon)
+[FAIL] npu_tops: MISMATCH on field 'npu_tops': observed 0, required >= 45 -> The lesson writes '45+ TOPS'. This check reads '45+' as 45 or more (inclusive), so exactly 45 passes and anything below 45 fails; there is no rounding or tolerance.
+[ OK ] backend: DirectML (required: DirectML)
+RESULT: FAILED - 1 of 4 checks need attention
+
+== case 4 - changed architecture: cpu_family is 'Intel Core Ultra'
+[ OK ] os_name: Windows (required: Windows)
+[FAIL] architecture: MISMATCH on field 'cpu_family': observed 'Intel Core Ultra', required 'Qualcomm Oryon' -> This profile is the Snapdragon X Elite/Plus platform; Intel Core Ultra and AMD Ryzen AI are separate platforms in the lesson, not this profile.
+[ OK ] npu_tops: 45 (required: >= 45) - exactly on the boundary, which passes
+[ OK ] backend: DirectML (required: DirectML)
+RESULT: FAILED - 1 of 4 checks need attention
+
+== case 5 - missing capability: npu_tops not reported
+[ OK ] os_name: Windows (required: Windows)
+[ OK ] architecture: Qualcomm Oryon (required: Qualcomm Oryon)
+[FAIL] npu_tops: MISSING_DATA: field 'npu_tops' was not reported; not guessing -> report 'npu_tops' and re-run
+[ OK ] backend: DirectML (required: DirectML)
+RESULT: FAILED - 1 of 4 checks need attention
+
+== case 6 - invalid: npu_tops given as text '45'
+INVALID INPUT (BAD_TYPE): 'npu_tops' must be a number, got str; text is never converted, so fix it and send the observation again
+
+== case 7 - invalid: npu_tops is NaN
+INVALID INPUT (BAD_VALUE): 'npu_tops' must be a finite number >= 0 (0 is allowed); fix it and send the observation again

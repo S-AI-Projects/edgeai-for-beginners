@@ -1,0 +1,38 @@
+{
+  "questions": [
+    {
+      "id": "Q1",
+      "kind": "predict_output",
+      "prompt": "Fixture ndk_not_needed.json targets x86_64-linux-clang and reports android_ndk as false. Predict the verdict and say what happens to the android_ndk field.",
+      "fixture": "fixtures/ndk_not_needed.json",
+      "answer": {"verdict": "pass", "mismatched": [], "unknown": [], "statuses": {"architecture": "pass", "android_ndk": "skipped"}},
+      "rationale": "The lesson lists the Android NDK only 'for mobile deployment', and the manifest applies that requirement only when the architecture is aarch64-android. For an x86_64-linux-clang target the field is skipped, so reporting false is harmless and the other five fields all match."
+    },
+    {
+      "id": "Q2",
+      "kind": "diagnose_failure",
+      "prompt": "The check exits 1 for fixture armv7_android_target.json. Which field is mismatched, which lesson requirement does it break, and what single change makes the fixture pass?",
+      "fixture": "fixtures/armv7_android_target.json",
+      "answer": {"verdict": "fail", "mismatched": ["architecture"], "unknown": [], "statuses": {"architecture": "fail", "android_ndk": "skipped"}},
+      "fix": {"architecture": "aarch64-android"},
+      "after_fix": "pass",
+      "rationale": "armv7-android is not one of the two -t targets the lesson shows (x86_64-linux-clang and aarch64-android), so architecture fails. android_ndk is skipped while the architecture is not aarch64-android, so the NDK is not the cause. Changing the target to aarch64-android makes the NDK requirement apply; the fixture reports android_ndk as true, so it then passes."
+    },
+    {
+      "id": "Q3",
+      "kind": "boundary_policy",
+      "prompt": "The lesson says 'Python 3.7 or higher'. Choose a boundary policy: is exactly 3.7 accepted, are versions compared as numbers or as text, and do extra zeros matter? Predict which of 3.6.15, 3.7, 3.7.0, 3.8 and 3.10 are accepted.",
+      "fixture": "fixtures/ok_linux_x86_64_htp.json",
+      "field": "python_version",
+      "answer": {"policy": "inclusive minimum, compared number by number, missing parts count as zero"},
+      "cases": [
+        {"value": "3.6.15", "accepted": false},
+        {"value": "3.7", "accepted": true},
+        {"value": "3.7.0", "accepted": true},
+        {"value": "3.8", "accepted": true},
+        {"value": "3.10", "accepted": true}
+      ],
+      "rationale": "'Or higher' makes the minimum inclusive, so 3.7 is accepted and 3.6.15 is not. Versions are compared number by number with missing parts treated as zero, so 3.7.0 equals 3.7 and 3.10 (ten) is above 3.7. Comparing as text would wrongly reject 3.10."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "lesson": "Module04/07.QualcommQNN.md",
+  "section": "Installation > Prerequisites, Quick Start Guide (-t target) and Example Step 2 (--target_backends)",
+  "source": "https://github.com/microsoft/edgeai-for-beginners/blob/e88f123a4bb5796594919db3a13257c429d1288c/Module04/07.QualcommQNN.md",
+  "requirements": [
+    {
+      "field": "os_name",
+      "kind": "one_of",
+      "expected": ["Linux", "Windows"],
+      "lesson_quotes": ["Linux or Windows development environment"]
+    },
+    {
+      "field": "python_version",
+      "kind": "min_version",
+      "expected": "3.7",
+      "lesson_quotes": ["Python 3.7 or higher"]
+    },
+    {
+      "field": "architecture",
+      "kind": "one_of",
+      "expected": ["x86_64-linux-clang", "aarch64-android"],
+      "lesson_quotes": ["-t x86_64-linux-clang", "-t aarch64-android"]
+    },
+    {
+      "field": "backend",
+      "kind": "one_of",
+      "expected": ["htp", "gpu", "cpu"],
+      "lesson_quotes": ["--target_backends htp,gpu,cpu"]
+    },
+    {
+      "field": "qnn_sdk",
+      "kind": "flag",
+      "expected": true,
+      "lesson_quotes": ["Qualcomm QNN SDK (requires registration with Qualcomm)"]
+    },
+    {
+      "field": "android_ndk",
+      "kind": "flag",
+      "expected": true,
+      "when": {"field": "architecture", "equals": "aarch64-android"},
+      "lesson_quotes": ["Android NDK (for mobile deployment)"]
+    }
+  ],
+  "lesson_unknowns": [
+    "minimum operating system version (the lesson names only Linux or Windows)",
+    "which Qualcomm hardware or simulator counts as compatible",
+    "QNN SDK version and Android NDK version",
+    "host CPU architecture and RAM"
+  ]
+}
