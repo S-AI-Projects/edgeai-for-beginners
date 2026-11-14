@@ -1,0 +1,9 @@
+client capabilities: ['resources', 'tools']
+server capabilities: ['prompts', 'tools']
+negotiated: ['tools']
+  invoke tools: OK 'tools-handled:ping' (handler calls: ['tools'])
+  invoke resources: REJECTED NOT_NEGOTIATED (handler calls: [])
+  invoke prompts: REJECTED NOT_NEGOTIATED (handler calls: [])
+baseline vs refactored on the fixture: identical outcomes
+baseline vs refactored on all 512 generated cases: 0 mismatches
+note: capability names are labels; this is a simulation, not a real client/server.

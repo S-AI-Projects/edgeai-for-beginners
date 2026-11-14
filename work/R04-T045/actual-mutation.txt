@@ -1,0 +1,159 @@
+.F.EFFEF...FF.......FFEFEF.
+======================================================================
+ERROR: test_empty_intersection_rejects_everything (test_example.BoundaryCases.test_empty_intersection_rejects_everything) (version='refactored')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 16, in each
+    yield impl
+GeneratorExit
+
+======================================================================
+ERROR: test_gate_comes_before_the_handler_lookup (test_example.BoundaryCases.test_gate_comes_before_the_handler_lookup) (version='refactored')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 16, in each
+    yield impl
+GeneratorExit
+
+======================================================================
+ERROR: test_resources_is_rejected_before_dispatch (test_example.TaskFixture.test_resources_is_rejected_before_dispatch) (version='refactored')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 16, in each
+    yield impl
+GeneratorExit
+
+======================================================================
+ERROR: test_server_only_capability_is_rejected_before_dispatch (test_example.TaskFixture.test_server_only_capability_is_rejected_before_dispatch) (version='refactored')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 16, in each
+    yield impl
+GeneratorExit
+
+======================================================================
+FAIL: test_baseline_and_refactor_agree_on_every_generated_case (test_example.BeforeAfterEquivalence.test_baseline_and_refactor_agree_on_every_generated_case)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 141, in test_baseline_and_refactor_agree_on_every_generated_case
+    self.assertEqual(mismatches, [])
+AssertionError: Lists differ: [([], ['tools'], 'tools', ('error', 'NOT_N[23601 chars],)))] != []
+
+First list contains 192 additional elements.
+First extra element 0:
+([], ['tools'], 'tools', ('error', 'NOT_NEGOTIATED', ()), ('ok', 'tools-handled:ping', ('tools',)))
+
+Diff is 27301 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_empty_intersection_rejects_everything (test_example.BoundaryCases.test_empty_intersection_rejects_everything)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 46, in test_empty_intersection_rejects_everything
+    self.assertEqual(self.call(impl, {"tools"}, {"prompts"}, capability)[:2],
+AssertionError: Tuples differ: ('ok', 'tools-handled:ping') != ('error', 'NOT_NEGOTIATED')
+
+First differing element 0:
+'ok'
+'error'
+
+- ('ok', 'tools-handled:ping')
++ ('error', 'NOT_NEGOTIATED')
+
+======================================================================
+FAIL: test_empty_sets_are_valid_and_negotiate_nothing (test_example.BoundaryCases.test_empty_sets_are_valid_and_negotiate_nothing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 51, in test_empty_sets_are_valid_and_negotiate_nothing
+    self.assertEqual(negotiate_capabilities({"tools"}, set()), frozenset())
+AssertionError: Items in the first set but not the second:
+'tools'
+
+======================================================================
+FAIL: test_gate_comes_before_the_handler_lookup (test_example.BoundaryCases.test_gate_comes_before_the_handler_lookup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 75, in test_gate_comes_before_the_handler_lookup
+    self.assertEqual(self.call(impl, CLIENT_CAPS, SERVER_CAPS, "resources", handler_names=())[:2],
+AssertionError: Tuples differ: ('error', 'NO_HANDLER') != ('error', 'NOT_NEGOTIATED')
+
+First differing element 1:
+'NO_HANDLER'
+'NOT_NEGOTIATED'
+
+- ('error', 'NO_HANDLER')
++ ('error', 'NOT_NEGOTIATED')
+
+======================================================================
+FAIL: test_lists_tuples_and_duplicates_are_accepted (test_example.BoundaryCases.test_lists_tuples_and_duplicates_are_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 64, in test_lists_tuples_and_duplicates_are_accepted
+    self.assertEqual(negotiate_capabilities(["tools", "tools", "resources"], ("tools", "prompts")),
+AssertionError: Items in the first set but not the second:
+'resources'
+'prompts'
+
+======================================================================
+FAIL: test_matching_is_exact_and_case_sensitive (test_example.BoundaryCases.test_matching_is_exact_and_case_sensitive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 59, in test_matching_is_exact_and_case_sensitive
+    self.assertEqual(negotiate_capabilities({"Tools"}, {"tools"}), frozenset())
+AssertionError: Items in the first set but not the second:
+'Tools'
+'tools'
+
+======================================================================
+FAIL: test_result_is_the_common_subset_and_order_independent (test_example.NegotiationProperties.test_result_is_the_common_subset_and_order_independent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 129, in test_result_is_the_common_subset_and_order_independent
+    self.assertTrue(result <= a and result <= b)
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_client_tools_resources_server_tools_prompts_negotiates_tools (test_example.TaskFixture.test_client_tools_resources_server_tools_prompts_negotiates_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 24, in test_client_tools_resources_server_tools_prompts_negotiates_tools
+    self.assertEqual(negotiate_capabilities(CLIENT_CAPS, SERVER_CAPS), frozenset({"tools"}))
+AssertionError: Items in the first set but not the second:
+'resources'
+'prompts'
+
+======================================================================
+FAIL: test_resources_is_rejected_before_dispatch (test_example.TaskFixture.test_resources_is_rejected_before_dispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 33, in test_resources_is_rejected_before_dispatch
+    self.assertEqual(self.call(impl, CLIENT_CAPS, SERVER_CAPS, "resources"),
+AssertionError: Tuples differ: ('ok', 'resources-handled:ping', ('resources',)) != ('error', 'NOT_NEGOTIATED', ())
+
+First differing element 0:
+'ok'
+'error'
+
+- ('ok', 'resources-handled:ping', ('resources',))
++ ('error', 'NOT_NEGOTIATED', ())
+
+======================================================================
+FAIL: test_server_only_capability_is_rejected_before_dispatch (test_example.TaskFixture.test_server_only_capability_is_rejected_before_dispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut5/test_example.py", line 38, in test_server_only_capability_is_rejected_before_dispatch
+    self.assertEqual(self.call(impl, CLIENT_CAPS, SERVER_CAPS, "prompts"),
+AssertionError: Tuples differ: ('ok', 'prompts-handled:ping', ('prompts',)) != ('error', 'NOT_NEGOTIATED', ())
+
+First differing element 0:
+'ok'
+'error'
+
+- ('ok', 'prompts-handled:ping', ('prompts',))
++ ('error', 'NOT_NEGOTIATED', ())
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.021s
+
+FAILED (failures=10, errors=4)
+exit=1
