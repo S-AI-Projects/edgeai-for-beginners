@@ -1,0 +1,1 @@
+{"os_name": "Linux", "python_version": "3.8", "architecture": "aarch64-android", "backend": "htp", "qnn_sdk": true, "android_ndk": true}

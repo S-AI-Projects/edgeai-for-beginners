@@ -1,0 +1,5 @@
+python3: Python 3.15.2
+platform: macOS-27.2-arm64-arm-64bit-Mach-O
+machine: arm64
+git: git version 2.54.0 (Apple Git-157)
+unittest: standard library (Python 3.15.2)
