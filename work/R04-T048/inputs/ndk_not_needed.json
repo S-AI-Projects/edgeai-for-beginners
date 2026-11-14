@@ -1,0 +1,1 @@
+{"os_name": "Linux", "python_version": "3.9", "architecture": "x86_64-linux-clang", "backend": "gpu", "qnn_sdk": true, "android_ndk": false}
