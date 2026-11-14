@@ -1,0 +1,2 @@
+boundary check made strict (>= became >) -> tests exit 1 (failure detected): Ran 33 tests in 0.231s / FAILED (failures=4, skipped=1)
+manifest expectation changed (arm became x86_64) -> tests exit 1 (failure detected): Ran 33 tests in 0.238s / FAILED (failures=18, skipped=1)

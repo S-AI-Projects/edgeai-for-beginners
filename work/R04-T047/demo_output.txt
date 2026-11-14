@@ -1,0 +1,66 @@
+lesson check: all 6 quoted requirement(s) found in Module04/05.AppleMLX.md
+== input 1/5: ok_macos14_arm_mlx.json
+verdict: PASS
+  [PASS] os_name: expected 'macOS', actual 'macOS'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] os_version: expected '13.0', actual '14.5'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] architecture: expected 'arm', actual 'arm'
+         lesson requirement: "Native ARM environment (not running under Rosetta)" | "Should output 'arm', not 'i386'"
+  [PASS] python_version: expected '3.8', actual '3.11'
+         lesson requirement: "Python 3.8+"
+  [PASS] backend: expected 'mlx', actual 'mlx'
+         lesson requirement: "pip install mlx-lm"
+  [PASS] ram_gb: expected 8, actual 16
+         lesson requirement: "8GB+ RAM (16GB+ recommended for larger models)"
+== input 2/5: rosetta_architecture_i386.json
+verdict: FAIL
+  [PASS] os_name: expected 'macOS', actual 'macOS'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] os_version: expected '13.0', actual '14.5'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [FAIL] architecture: expected 'arm', actual 'i386'
+         lesson requirement: "Native ARM environment (not running under Rosetta)" | "Should output 'arm', not 'i386'"
+  [PASS] python_version: expected '3.8', actual '3.11'
+         lesson requirement: "Python 3.8+"
+  [PASS] backend: expected 'mlx', actual 'mlx'
+         lesson requirement: "pip install mlx-lm"
+  [PASS] ram_gb: expected 8, actual 16
+         lesson requirement: "8GB+ RAM (16GB+ recommended for larger models)"
+mismatched: architecture
+== input 3/5: missing_backend.json
+verdict: INCOMPLETE
+  [PASS] os_name: expected 'macOS', actual 'macOS'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] os_version: expected '13.0', actual '14.5'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] architecture: expected 'arm', actual 'arm'
+         lesson requirement: "Native ARM environment (not running under Rosetta)" | "Should output 'arm', not 'i386'"
+  [PASS] python_version: expected '3.8', actual '3.11'
+         lesson requirement: "Python 3.8+"
+  [UNKNOWN] backend: expected 'mlx', actual <not reported>
+         lesson requirement: "pip install mlx-lm"
+  [PASS] ram_gb: expected 8, actual 16
+         lesson requirement: "8GB+ RAM (16GB+ recommended for larger models)"
+unknown (not guessed): backend
+== input 4/5: invalid_ram_gb.json
+INVALID INPUT: ram_gb must be a non-negative number of gigabytes (for example 16), got 'lots' (str). Nothing was guessed; fix the value and re-run.
+  -> this input was rejected without guessing; the next input is checked normally
+== input 5/5: ok_boundary_minimums.json
+verdict: PASS
+  [PASS] os_name: expected 'macOS', actual 'macOS'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] os_version: expected '13.0', actual '13.0'
+         lesson requirement: "macOS 13.0+ (for Apple Silicon optimization)"
+  [PASS] architecture: expected 'arm', actual 'arm'
+         lesson requirement: "Native ARM environment (not running under Rosetta)" | "Should output 'arm', not 'i386'"
+  [PASS] python_version: expected '3.8', actual '3.8'
+         lesson requirement: "Python 3.8+"
+  [PASS] backend: expected 'mlx', actual 'mlx'
+         lesson requirement: "pip install mlx-lm"
+  [PASS] ram_gb: expected 8, actual 8
+         lesson requirement: "8GB+ RAM (16GB+ recommended for larger models)"
+  [WARN] ram_gb: 8 is below the lesson's recommended 16 (8GB+ RAM (16GB+ recommended for larger models))
+summary: pass=2 fail=1 incomplete=1 invalid=1
+recovery: last input passed after the invalid one
+exit code: 0

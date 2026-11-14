@@ -1,0 +1,47 @@
+{
+  "lesson": "Module04/05.AppleMLX.md",
+  "section": "Installation Guide > System Requirements (and Troubleshooting > Installation Problems)",
+  "source": "https://github.com/microsoft/edgeai-for-beginners/blob/e88f123a4bb5796594919db3a13257c429d1288c/Module04/05.AppleMLX.md",
+  "requirements": [
+    {
+      "field": "os_name",
+      "kind": "equals",
+      "expected": "macOS",
+      "lesson_quotes": ["macOS 13.0+ (for Apple Silicon optimization)"]
+    },
+    {
+      "field": "os_version",
+      "kind": "min_version",
+      "expected": "13.0",
+      "lesson_quotes": ["macOS 13.0+ (for Apple Silicon optimization)"]
+    },
+    {
+      "field": "architecture",
+      "kind": "equals",
+      "expected": "arm",
+      "lesson_quotes": [
+        "Native ARM environment (not running under Rosetta)",
+        "Should output 'arm', not 'i386'"
+      ]
+    },
+    {
+      "field": "python_version",
+      "kind": "min_version",
+      "expected": "3.8",
+      "lesson_quotes": ["Python 3.8+"]
+    },
+    {
+      "field": "backend",
+      "kind": "equals",
+      "expected": "mlx",
+      "lesson_quotes": ["pip install mlx-lm"]
+    },
+    {
+      "field": "ram_gb",
+      "kind": "min_number",
+      "expected": 8,
+      "advisory_min": 16,
+      "lesson_quotes": ["8GB+ RAM (16GB+ recommended for larger models)"]
+    }
+  ]
+}
