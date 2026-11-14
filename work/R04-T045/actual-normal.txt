@@ -1,0 +1,29 @@
+test_a_refactor_that_uses_a_union_must_be_caught (test_example.BeforeAfterEquivalence.test_a_refactor_that_uses_a_union_must_be_caught) ... ok
+test_baseline_and_refactor_agree_on_every_generated_case (test_example.BeforeAfterEquivalence.test_baseline_and_refactor_agree_on_every_generated_case) ... ok
+test_the_comparison_can_fail (test_example.BeforeAfterEquivalence.test_the_comparison_can_fail) ... ok
+test_empty_intersection_rejects_everything (test_example.BoundaryCases.test_empty_intersection_rejects_everything) ... ok
+test_empty_sets_are_valid_and_negotiate_nothing (test_example.BoundaryCases.test_empty_sets_are_valid_and_negotiate_nothing) ... ok
+test_gate_comes_before_the_handler_lookup (test_example.BoundaryCases.test_gate_comes_before_the_handler_lookup) ... ok
+test_handler_errors_are_not_swallowed (test_example.BoundaryCases.test_handler_errors_are_not_swallowed) ... ok
+test_identical_sets_allow_everything (test_example.BoundaryCases.test_identical_sets_allow_everything) ... ok
+test_inputs_are_not_modified (test_example.BoundaryCases.test_inputs_are_not_modified) ... ok
+test_lists_tuples_and_duplicates_are_accepted (test_example.BoundaryCases.test_lists_tuples_and_duplicates_are_accepted) ... ok
+test_matching_is_exact_and_case_sensitive (test_example.BoundaryCases.test_matching_is_exact_and_case_sensitive) ... ok
+test_negotiated_capability_without_a_handler_is_reported (test_example.BoundaryCases.test_negotiated_capability_without_a_handler_is_reported) ... ok
+test_a_bare_string_is_not_a_capability_set (test_example.FailureCases.test_a_bare_string_is_not_a_capability_set) ... ok
+test_bad_request_capability_is_rejected (test_example.FailureCases.test_bad_request_capability_is_rejected) ... ok
+test_non_string_or_empty_members_are_rejected (test_example.FailureCases.test_non_string_or_empty_members_are_rejected) ... ok
+test_none_and_non_collections_are_rejected (test_example.FailureCases.test_none_and_non_collections_are_rejected) ... ok
+test_unknown_capability_is_not_negotiated (test_example.FailureCases.test_unknown_capability_is_not_negotiated) ... ok
+test_handlers_record_calls (test_example.NegotiationProperties.test_handlers_record_calls) ... ok
+test_result_is_the_common_subset_and_order_independent (test_example.NegotiationProperties.test_result_is_the_common_subset_and_order_independent) ... ok
+test_client_tools_resources_server_tools_prompts_negotiates_tools (test_example.TaskFixture.test_client_tools_resources_server_tools_prompts_negotiates_tools) ... ok
+test_resources_is_rejected_before_dispatch (test_example.TaskFixture.test_resources_is_rejected_before_dispatch) ... ok
+test_server_only_capability_is_rejected_before_dispatch (test_example.TaskFixture.test_server_only_capability_is_rejected_before_dispatch) ... ok
+test_tools_is_dispatched (test_example.TaskFixture.test_tools_is_dispatched) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.011s
+
+OK
+exit=0
