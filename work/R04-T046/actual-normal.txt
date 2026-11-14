@@ -1,0 +1,33 @@
+test_checks_follow_the_listed_order (test_example.NormalCases.test_checks_follow_the_listed_order) ... ok
+test_complete_fixture_passes (test_example.NormalCases.test_complete_fixture_passes) ... ok
+test_non_secret_values_are_shown_and_secret_values_are_not (test_example.NormalCases.test_non_secret_values_are_shown_and_secret_values_are_not) ... ok
+test_output_is_deterministic (test_example.NormalCases.test_output_is_deterministic) ... ok
+test_inputs_are_not_modified (test_example.ReadOnlyAndOffline.test_inputs_are_not_modified) ... ok
+test_no_network_and_no_subprocess_are_used (test_example.ReadOnlyAndOffline.test_no_network_and_no_subprocess_are_used) ... ok
+test_system_probe_only_looks_up_the_path (test_example.ReadOnlyAndOffline.test_system_probe_only_looks_up_the_path) ... ok
+test_demo_prints_exactly_the_worked_examples (test_example.RegressionOfTheWorkedExamples.test_demo_prints_exactly_the_worked_examples) ... ok
+test_output_equals_worked_example_file (test_example.RegressionOfTheWorkedExamples.test_output_equals_worked_example_file) ... ok
+test_readme_contains_both_exact_outputs (test_example.RegressionOfTheWorkedExamples.test_readme_contains_both_exact_outputs) ... ok
+test_the_two_published_examples_have_the_stated_results (test_example.RegressionOfTheWorkedExamples.test_the_two_published_examples_have_the_stated_results) ... ok
+test_ordinary_names_are_not_treated_as_secret (test_example.SecretsAreNeverPrinted.test_ordinary_names_are_not_treated_as_secret) ... ok
+test_secret_is_hidden_even_when_other_checks_fail (test_example.SecretsAreNeverPrinted.test_secret_is_hidden_even_when_other_checks_fail) ... ok
+test_secret_value_is_absent_from_every_output_form (test_example.SecretsAreNeverPrinted.test_secret_value_is_absent_from_every_output_form) ... ok
+test_unflagged_names_with_key_token_secret_or_password_are_hidden_too (test_example.SecretsAreNeverPrinted.test_unflagged_names_with_key_token_secret_or_password_are_hidden_too) ... ok
+test_worked_examples_never_print_the_key (test_example.SecretsAreNeverPrinted.test_worked_examples_never_print_the_key) ... ok
+test_absent_config_field_is_one_separate_failure (test_example.SeparateActionableFailures.test_absent_config_field_is_one_separate_failure) ... ok
+test_blank_values_are_a_distinct_failure (test_example.SeparateActionableFailures.test_blank_values_are_a_distinct_failure) ... ok
+test_both_problems_are_reported_separately_with_different_statuses (test_example.SeparateActionableFailures.test_both_problems_are_reported_separately_with_different_statuses) ... ok
+test_every_missing_executable_gets_its_own_line (test_example.SeparateActionableFailures.test_every_missing_executable_gets_its_own_line) ... ok
+test_missing_executable_is_one_separate_failure (test_example.SeparateActionableFailures.test_missing_executable_is_one_separate_failure) ... ok
+test_none_counts_as_absent (test_example.SeparateActionableFailures.test_none_counts_as_absent) ... ok
+test_blank_requirement_name_is_rejected (test_example.SpecAndConfigValidation.test_blank_requirement_name_is_rejected) ... ok
+test_config_must_be_a_mapping_of_text (test_example.SpecAndConfigValidation.test_config_must_be_a_mapping_of_text) ... ok
+test_duplicate_requirement_is_rejected (test_example.SpecAndConfigValidation.test_duplicate_requirement_is_rejected) ... ok
+test_empty_spec_is_rejected (test_example.SpecAndConfigValidation.test_empty_spec_is_rejected) ... ok
+test_same_name_may_be_both_an_executable_and_a_config_field (test_example.SpecAndConfigValidation.test_same_name_may_be_both_an_executable_and_a_config_field) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.002s
+
+OK
+exit=0

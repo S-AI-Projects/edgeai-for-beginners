@@ -1,0 +1,17 @@
+Foundry Local preflight (read-only: nothing installed, no service contacted)
+[ OK ] executable foundry: found on PATH
+[ OK ] executable python: found on PATH
+[ OK ] executable pip: found on PATH
+[ OK ] config MODEL: set (value: phi-4-mini)
+[ OK ] config BASE_URL: set (value: http://localhost:8000)
+[ OK ] config API_KEY: set (value hidden)
+RESULT: PASSED - 6 of 6 checks ok
+
+Foundry Local preflight (read-only: nothing installed, no service contacted)
+[ OK ] executable foundry: found on PATH
+[ OK ] executable python: found on PATH
+[FAIL] executable pip: not found on PATH -> install pip for your Python, then re-run
+[ OK ] config MODEL: set (value: phi-4-mini)
+[FAIL] config BASE_URL: not set -> set BASE_URL to your Foundry Local address
+[ OK ] config API_KEY: set (value hidden)
+RESULT: FAILED - 2 of 6 checks need attention

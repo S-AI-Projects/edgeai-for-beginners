@@ -1,0 +1,104 @@
+..F....FFF..FFFFFFFF...........
+======================================================================
+FAIL: test_non_secret_values_are_shown_and_secret_values_are_not (test_example.NormalCases.test_non_secret_values_are_shown_and_secret_values_are_not)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 38, in test_non_secret_values_are_shown_and_secret_values_are_not
+    self.assertIn("API_KEY: set (value hidden)", text)
+AssertionError: 'API_KEY: set (value hidden)' not found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[ OK ] executable pip: found on PATH\n[ OK ] config MODEL: set (value: phi-4-mini)\n[ OK ] config BASE_URL: set (value: http://localhost:8000)\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: PASSED - 6 of 6 checks ok'
+
+======================================================================
+FAIL: test_demo_prints_exactly_the_worked_examples (test_example.RegressionOfTheWorkedExamples.test_demo_prints_exactly_the_worked_examples)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 173, in test_demo_prints_exactly_the_worked_examples
+    self.assertEqual(buffer.getvalue(), read("worked_example.txt"))
+AssertionError: 'Foun[329 chars]value: demo-key-0000)\nRESULT: PASSED - 6 of 6[480 chars]on\n' != 'Foun[329 chars]value hidden)\nRESULT: PASSED - 6 of 6 checks [464 chars]on\n'
+Diff is 1157 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_output_equals_worked_example_file (test_example.RegressionOfTheWorkedExamples.test_output_equals_worked_example_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 162, in test_output_equals_worked_example_file
+    self.assertEqual(render_worked_examples(), read("worked_example.txt"))
+AssertionError: 'Foun[329 chars]value: demo-key-0000)\nRESULT: PASSED - 6 of 6[480 chars]on\n' != 'Foun[329 chars]value hidden)\nRESULT: PASSED - 6 of 6 checks [464 chars]on\n'
+Diff is 1157 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_readme_contains_both_exact_outputs (test_example.RegressionOfTheWorkedExamples.test_readme_contains_both_exact_outputs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 166, in test_readme_contains_both_exact_outputs
+    self.assertIn("```\n" + worked_example_a() + "\n```", readme)
+AssertionError: '```\nFoundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[ OK ] executable pip: found on PATH\n[ OK ] config MODEL: set (value: phi-4-mini)\n[ OK ] config BASE_URL: set (value: http://localhost:8000)\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: PASSED - 6 of 6 checks ok\n```' not found in '# R04-T046 - Installation preflight report: worked example with checks\n\nCompanion to [Module08/01.FoundryLocalSetup.md](../../01.FoundryLocalSetup.md)\n("Session 1: Getting Started with Foundry Local").\n\n## How this illustrates the lesson, and where it stops\nThe lesson\'s prerequisites and "Verify Installation" steps ask the reader to confirm that tools\nsuch as `foundry`, Python and `pip` are available, and its environment-variables table lists\nsettings such as `MODEL`, `BASE_URL` and `API_KEY` (plus `AZURE_OPENAI_API_KEY` for Azure).\n`example.py` turns that checklist into a **read-only preflight**: it checks an explicit list of\nexecutables and config fields and reports each problem separately, with what to do next.\n\nThe lesson does not discuss redacting secrets by name. This example adds that rule because the\nlesson\'s table includes API keys: a secret value is **never printed** (and is never even stored in\nthe report).\n\n**Simplifications:** the "machine" is a fixture (a fake PATH list and a plain dict). Nothing here\ninstalls Foundry Local, starts a service, runs `foundry --version`, or checks the lesson\'s system\nrequirements (Windows version, RAM, disk, NPU/GPU). The lesson\'s `API_KEY` is usually not needed for\nlocal runs; the fixture lists it only so that hiding a secret can be demonstrated.\n\n## The contract\n| Situation | Result |\n|---|---|\n| Every listed executable and config field is present | `RESULT: PASSED` |\n| An executable is not found | its own `[FAIL] executable <name>: not found on PATH -> <what to do>` line (`MISSING_EXECUTABLE`) |\n| A config field is absent | its own `[FAIL] config <name>: not set -> <what to do>` line (`ABSENT_CONFIG`) |\n| A config field is set but blank | its own `[FAIL] ... set but empty ...` line (`EMPTY_CONFIG`) |\n| A field is secret (flagged, or its name contains KEY, TOKEN, SECRET or PASSWORD) | `set (value hidden)`; the value appears nowhere in the output |\n\n| Public part | Role |\n|---|---|\n| `Spec`, `ExecutableRequirement`, `ConfigRequirement` | the explicit list of things to check, each with an actionable hint |\n| `check_environment(spec, probe, config)` | the read-only preflight; returns a `Report` and never modifies its inputs |\n| `render_report(report)` | the text shown to the user |\n| `FakeProbe` / `SystemProbe` | a fixture PATH / a read-only `shutil.which` lookup (nothing is run) |\n| `SpecError.code` | `EMPTY_SPEC`, `BAD_REQUIREMENT`, `DUPLICATE_REQUIREMENT`, `BAD_CONFIG` |\n\n## Worked example A - a complete environment\n**Input** (the fixture in `example.py`):\n- checks: executables `foundry`, `python`, `pip`; config fields `MODEL`, `BASE_URL`, `API_KEY` (secret)\n- fake PATH contains: `foundry`, `python`, `pip`\n- config: `MODEL = phi-4-mini`, `BASE_URL = http://localhost:8000`, `API_KEY = demo-key-0000` (an obviously fake demo value)\n\n**Output** (exact):\n```\nFoundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[ OK ] executable pip: found on PATH\n[ OK ] config MODEL: set (value: phi-4-mini)\n[ OK ] config BASE_URL: set (value: http://localhost:8000)\n[ OK ] config API_KEY: set (value hidden)\nRESULT: PASSED - 6 of 6 checks ok\n```\n**Why:** all six checks find what they need. The non-secret values are shown; the `API_KEY` value is not.\n\n## Worked example B - one missing executable and one absent config field\n**Input:** the same checks, but the fake PATH contains only `foundry` and `python`, and the config has\n`MODEL` and `API_KEY` but no `BASE_URL`.\n\n**Output** (exact):\n```\nFoundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[FAIL] executable pip: not found on PATH -> install pip for your Python, then re-run\n[ OK ] config MODEL: set (value: phi-4-mini)\n[FAIL] config BASE_URL: not set -> set BASE_URL to your Foundry Local address\n[ OK ] config API_KEY: set (value hidden)\nRESULT: FAILED - 2 of 6 checks need attention\n```\n**Why:** the missing `pip` and the absent `BASE_URL` are reported as two separate failures, each\nnaming the problem and the next step. `API_KEY` is present, so it passes, and its value stays hidden.\n\n## Regression test\nThe tests re-run both examples and require the output to equal `worked_example.txt` **and** the two\nblocks above, character for character, so this explanation cannot drift away from the code.\n\n## Run\n```bash\npython3 Module08/applied-labs/r04-t046/example.py\npython3 -m unittest discover -s Module08/applied-labs/r04-t046 -p "test_*.py"\n```\nPython 3 standard library only. No model download, paid provider, GPU or device, and no network.\n\n## Limits\nThis is a simulation on fixtures. It makes no claim about any real machine, hardware, cloud service,\nor the performance of any model, and it does not check that Foundry Local actually works.\n'
+
+======================================================================
+FAIL: test_secret_is_hidden_even_when_other_checks_fail (test_example.SecretsAreNeverPrinted.test_secret_is_hidden_even_when_other_checks_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 98, in test_secret_is_hidden_even_when_other_checks_fail
+    self.assertNotIn("sk-LEAK-ME", text)
+AssertionError: 'sk-LEAK-ME' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[FAIL] executable foundry: not found on PATH -> install Foundry Local (lesson Part 1), then re-run\n[FAIL] executable python: not found on PATH -> install Python 3, then re-run\n[FAIL] executable pip: not found on PATH -> install pip for your Python, then re-run\n[ OK ] config MODEL: set (value: m)\n[FAIL] config BASE_URL: not set -> set BASE_URL to your Foundry Local address\n[ OK ] config API_KEY: set (value: sk-LEAK-ME)\nRESULT: FAILED - 4 of 6 checks need attention'
+
+======================================================================
+FAIL: test_secret_value_is_absent_from_every_output_form (test_example.SecretsAreNeverPrinted.test_secret_value_is_absent_from_every_output_form) (case='complete')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 91, in test_secret_value_is_absent_from_every_output_form
+    self.assertNotIn(DEMO_KEY, everything)
+AssertionError: 'demo-key-0000' unexpectedly found in "Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[ OK ] executable pip: found on PATH\n[ OK ] config MODEL: set (value: phi-4-mini)\n[ OK ] config BASE_URL: set (value: http://localhost:8000)\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: PASSED - 6 of 6 checks okReport(checks=(Check(kind='executable', name='foundry', status='OK', message='found on PATH'), Check(kind='executable', name='python', status='OK', message='found on PATH'), Check(kind='executable', name='pip', status='OK', message='found on PATH'), Check(kind='config', name='MODEL', status='OK', message='set (value: phi-4-mini)'), Check(kind='config', name='BASE_URL', status='OK', message='set (value: http://localhost:8000)'), Check(kind='config', name='API_KEY', status='OK', message='set (value: demo-key-0000)')))found on PATH found on PATH found on PATH set (value: phi-4-mini) set (value: http://localhost:8000) set (value: demo-key-0000)"
+
+======================================================================
+FAIL: test_secret_value_is_absent_from_every_output_form (test_example.SecretsAreNeverPrinted.test_secret_value_is_absent_from_every_output_form) (case='broken')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 91, in test_secret_value_is_absent_from_every_output_form
+    self.assertNotIn(DEMO_KEY, everything)
+AssertionError: 'demo-key-0000' unexpectedly found in "Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[FAIL] executable pip: not found on PATH -> install pip for your Python, then re-run\n[ OK ] config MODEL: set (value: phi-4-mini)\n[FAIL] config BASE_URL: not set -> set BASE_URL to your Foundry Local address\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: FAILED - 2 of 6 checks need attentionReport(checks=(Check(kind='executable', name='foundry', status='OK', message='found on PATH'), Check(kind='executable', name='python', status='OK', message='found on PATH'), Check(kind='executable', name='pip', status='MISSING_EXECUTABLE', message='not found on PATH -> install pip for your Python, then re-run'), Check(kind='config', name='MODEL', status='OK', message='set (value: phi-4-mini)'), Check(kind='config', name='BASE_URL', status='ABSENT_CONFIG', message='not set -> set BASE_URL to your Foundry Local address'), Check(kind='config', name='API_KEY', status='OK', message='set (value: demo-key-0000)')))found on PATH found on PATH not found on PATH -> install pip for your Python, then re-run set (value: phi-4-mini) not set -> set BASE_URL to your Foundry Local address set (value: demo-key-0000)"
+
+======================================================================
+FAIL: test_unflagged_names_with_key_token_secret_or_password_are_hidden_too (test_example.SecretsAreNeverPrinted.test_unflagged_names_with_key_token_secret_or_password_are_hidden_too) (name='API_KEY')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 106, in test_unflagged_names_with_key_token_secret_or_password_are_hidden_too
+    self.assertNotIn("TOP-SECRET-VALUE", text)
+AssertionError: 'TOP-SECRET-VALUE' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] config API_KEY: set (value: TOP-SECRET-VALUE)\nRESULT: PASSED - 1 of 1 checks ok'
+
+======================================================================
+FAIL: test_unflagged_names_with_key_token_secret_or_password_are_hidden_too (test_example.SecretsAreNeverPrinted.test_unflagged_names_with_key_token_secret_or_password_are_hidden_too) (name='access_token')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 106, in test_unflagged_names_with_key_token_secret_or_password_are_hidden_too
+    self.assertNotIn("TOP-SECRET-VALUE", text)
+AssertionError: 'TOP-SECRET-VALUE' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] config access_token: set (value: TOP-SECRET-VALUE)\nRESULT: PASSED - 1 of 1 checks ok'
+
+======================================================================
+FAIL: test_unflagged_names_with_key_token_secret_or_password_are_hidden_too (test_example.SecretsAreNeverPrinted.test_unflagged_names_with_key_token_secret_or_password_are_hidden_too) (name='CLIENT_SECRET')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 106, in test_unflagged_names_with_key_token_secret_or_password_are_hidden_too
+    self.assertNotIn("TOP-SECRET-VALUE", text)
+AssertionError: 'TOP-SECRET-VALUE' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] config CLIENT_SECRET: set (value: TOP-SECRET-VALUE)\nRESULT: PASSED - 1 of 1 checks ok'
+
+======================================================================
+FAIL: test_unflagged_names_with_key_token_secret_or_password_are_hidden_too (test_example.SecretsAreNeverPrinted.test_unflagged_names_with_key_token_secret_or_password_are_hidden_too) (name='DbPassword')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 106, in test_unflagged_names_with_key_token_secret_or_password_are_hidden_too
+    self.assertNotIn("TOP-SECRET-VALUE", text)
+AssertionError: 'TOP-SECRET-VALUE' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] config DbPassword: set (value: TOP-SECRET-VALUE)\nRESULT: PASSED - 1 of 1 checks ok'
+
+======================================================================
+FAIL: test_worked_examples_never_print_the_key (test_example.SecretsAreNeverPrinted.test_worked_examples_never_print_the_key)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/mut6/test_example.py", line 94, in test_worked_examples_never_print_the_key
+    self.assertNotIn(DEMO_KEY, render_worked_examples())
+AssertionError: 'demo-key-0000' unexpectedly found in 'Foundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[ OK ] executable pip: found on PATH\n[ OK ] config MODEL: set (value: phi-4-mini)\n[ OK ] config BASE_URL: set (value: http://localhost:8000)\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: PASSED - 6 of 6 checks ok\n\nFoundry Local preflight (read-only: nothing installed, no service contacted)\n[ OK ] executable foundry: found on PATH\n[ OK ] executable python: found on PATH\n[FAIL] executable pip: not found on PATH -> install pip for your Python, then re-run\n[ OK ] config MODEL: set (value: phi-4-mini)\n[FAIL] config BASE_URL: not set -> set BASE_URL to your Foundry Local address\n[ OK ] config API_KEY: set (value: demo-key-0000)\nRESULT: FAILED - 2 of 6 checks need attention\n'
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.003s
+
+FAILED (failures=12)
+exit=1
