@@ -1,0 +1,142 @@
+{
+  "task_id": "R04-T055",
+  "issue": 55,
+  "module": "Module04/07.QualcommQNN.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "matching_fixture_passes",
+      "inputs": {
+        "os": "Linux",
+        "architecture": "aarch64",
+        "backend": "htp",
+        "capabilities": [
+          "Hexagon_NPU",
+          "HTP_Backend",
+          "QNN_SDK"
+        ]
+      },
+      "expected": {
+        "compatible": true,
+        "status": "PASS",
+        "mismatches": [],
+        "missing_capabilities": []
+      },
+      "actual": {
+        "compatible": true,
+        "status": "PASS",
+        "mismatches": [],
+        "missing_capabilities": []
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "changed_architecture_fails_mismatch_reported",
+      "inputs": {
+        "os": "Linux",
+        "architecture": "x86_64",
+        "backend": "htp",
+        "capabilities": [
+          "Hexagon_NPU",
+          "HTP_Backend",
+          "QNN_SDK"
+        ]
+      },
+      "expected": {
+        "compatible": false,
+        "status": "FAIL",
+        "mismatches": [
+          {
+            "field": "architecture",
+            "expected": "aarch64",
+            "actual": "x86_64"
+          }
+        ]
+      },
+      "actual": {
+        "compatible": false,
+        "status": "FAIL",
+        "mismatches": [
+          {
+            "field": "architecture",
+            "expected": "aarch64",
+            "actual": "x86_64"
+          }
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "missing_capabilities_reported",
+      "inputs": {
+        "os": "Linux",
+        "architecture": "aarch64",
+        "backend": "htp",
+        "capabilities": [
+          "QNN_SDK"
+        ]
+      },
+      "expected": {
+        "compatible": false,
+        "missing_capabilities": [
+          "Hexagon_NPU",
+          "HTP_Backend"
+        ]
+      },
+      "actual": {
+        "compatible": false,
+        "missing_capabilities": [
+          "Hexagon_NPU",
+          "HTP_Backend"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "refactoring_equivalence_baseline_vs_refactored",
+      "expected": {
+        "all_equivalent": true
+      },
+      "actual": {
+        "all_equivalent": true,
+        "total_fixtures": 3
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "exact_lesson_requirement_recorded",
+      "expected": "Module04/07.QualcommQNN.md",
+      "actual": "Module04/07.QualcommQNN.md",
+      "status": "PASSED"
+    },
+    {
+      "name": "unestablished_behaviors_documented",
+      "expected": "At least 4 unestablished behaviors and 5 concept mappings",
+      "actual": {
+        "unestablished_count": 4,
+        "mapping_count": 7
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module04/applied-labs/r04-t055 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
