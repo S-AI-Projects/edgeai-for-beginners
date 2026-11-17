@@ -1,0 +1,26 @@
+[
+  {
+    "id": "Q1_PREDICT_OUTPUT",
+    "type": "predict_output",
+    "question": "What is the preflight status and sanitized api_token output for a complete fixture?",
+    "predicted_status": "PASSED",
+    "masked_api_token": "***",
+    "rationale": "When all required executables and configurations exist, status is PASSED and credentials matching secret substrings are masked as '***'."
+  },
+  {
+    "id": "Q2_DIAGNOSE_FAILURE",
+    "type": "diagnose_failure",
+    "question": "When 'git' is omitted from available executables, what error code and action are reported?",
+    "error_code": "EXECUTABLE_NOT_FOUND",
+    "remediation": "Install 'git' and ensure it is available in PATH.",
+    "rationale": "Missing executables return EXECUTABLE_NOT_FOUND with explicit instructions to install the tool."
+  },
+  {
+    "id": "Q3_BOUNDARY_POLICY",
+    "type": "choose_boundary_policy",
+    "question": "What policy should be adopted when an optional config field is absent vs mandatory field?",
+    "policy": "STRICT_SCHEMA_ENFORCEMENT",
+    "rationale": "Mandatory fields fail immediately with CONFIG_FIELD_MISSING without guessing defaults; explicit failures prevent silent runtime errors."
+  }
+]
+
