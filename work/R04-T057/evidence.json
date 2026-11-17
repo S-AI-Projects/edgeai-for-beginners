@@ -1,0 +1,100 @@
+{
+  "task_id": "R04-T057",
+  "issue": 57,
+  "module": "Module02/03.GemmaFamily.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "canonical_manifest_selection_admits_only_a",
+      "inputs": {
+        "manifest": [
+          {
+            "model_id": "fixture-a",
+            "name": "Synthetic Gemma Teaching Variant A",
+            "required_ram_gb": 4.0,
+            "max_context_length": 2048,
+            "family": "gemma-synthetic"
+          },
+          {
+            "model_id": "fixture-b",
+            "name": "Synthetic Gemma Teaching Variant B",
+            "required_ram_gb": 8.0,
+            "max_context_length": 4096,
+            "family": "gemma-synthetic"
+          }
+        ],
+        "ram_budget_gb": 6.0,
+        "requested_context": 1024
+      },
+      "expected": {
+        "admitted_ids": [
+          "fixture-a"
+        ],
+        "excluded_ids": [
+          "fixture-b"
+        ]
+      },
+      "actual": {
+        "admitted_ids": [
+          "fixture-a"
+        ],
+        "excluded_ids": [
+          "fixture-b"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "explicit_failure_reasons_reported",
+      "expected": "Insufficient RAM reason specifying model requirement 8.0 GB vs budget 6.0 GB",
+      "actual": [
+        "Insufficient RAM: model requires 8.0 GB, but host budget is 6.0 GB."
+      ],
+      "status": "PASSED"
+    },
+    {
+      "name": "worked_input_to_output_explanation_published",
+      "expected": "Complete 4-section worked explanation detailing input, steps, output, and regression guarantee",
+      "actual": {
+        "sections_present": true,
+        "character_length": 1631
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "exact_lesson_source_recorded",
+      "expected": "Module02/03.GemmaFamily.md",
+      "actual": "Module02/03.GemmaFamily.md",
+      "status": "PASSED"
+    },
+    {
+      "name": "unestablished_behaviors_and_concept_mapping",
+      "expected": "At least 4 unestablished behaviors and 4 lesson concept mappings",
+      "actual": {
+        "unestablished_count": 5,
+        "mapping_count": 5
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check for fixture-b admission",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module02/applied-labs/r04-t057 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
