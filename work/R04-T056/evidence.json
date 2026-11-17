@@ -1,0 +1,156 @@
+{
+  "task_id": "R04-T056",
+  "issue": 56,
+  "module": "Module03/02.DeployingSLMinLocalEnv.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "complete_fixture_passes",
+      "inputs": {
+        "executables": {
+          "ollama": true,
+          "docker": true
+        },
+        "config": {
+          "endpoint": "http://localhost:11434",
+          "port": 11434,
+          "model_name": "phi4:mini",
+          "api_token": "secret-token-super-private-999"
+        }
+      },
+      "expected": {
+        "status": "PASS",
+        "passed": true,
+        "issues_count": 0
+      },
+      "actual": {
+        "status": "PASS",
+        "passed": true,
+        "issues_count": 0
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "missing_executable_actionable_failure",
+      "inputs": {
+        "executables": {
+          "ollama": false,
+          "docker": true
+        },
+        "config": {
+          "endpoint": "http://localhost:11434",
+          "port": 11434,
+          "model_name": "phi4:mini"
+        }
+      },
+      "expected": {
+        "status": "FAIL",
+        "passed": false,
+        "missing_executables": [
+          "ollama"
+        ],
+        "absent_config_fields": []
+      },
+      "actual": {
+        "status": "FAIL",
+        "passed": false,
+        "missing_executables": [
+          "ollama"
+        ],
+        "absent_config_fields": []
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "absent_config_field_actionable_failure",
+      "inputs": {
+        "executables": {
+          "ollama": true,
+          "docker": true
+        },
+        "config": {
+          "endpoint": "http://localhost:11434",
+          "port": 11434
+        }
+      },
+      "expected": {
+        "status": "FAIL",
+        "passed": false,
+        "absent_config_fields": [
+          "model_name"
+        ],
+        "missing_executables": []
+      },
+      "actual": {
+        "status": "FAIL",
+        "passed": false,
+        "absent_config_fields": [
+          "model_name"
+        ],
+        "missing_executables": []
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "secrets_never_printed_redacted_diagnostics",
+      "expected": {
+        "api_token": "***REDACTED***",
+        "raw_secret_exposed": false
+      },
+      "actual": {
+        "api_token": "***REDACTED***",
+        "raw_secret_exposed": false
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "failure_diagnosis_and_recovery_flow",
+      "expected": {
+        "initial_passed": false,
+        "recovered_passed": true,
+        "recovery_successful": true
+      },
+      "actual": {
+        "initial_passed": false,
+        "recovered_passed": true,
+        "recovery_successful": true
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "exact_lesson_source_recorded",
+      "expected": "Module03/02.DeployingSLMinLocalEnv.md",
+      "actual": "Module03/02.DeployingSLMinLocalEnv.md",
+      "status": "PASSED"
+    },
+    {
+      "name": "unestablished_behaviors_and_concept_mapping",
+      "expected": "At least 4 unestablished behaviors and 4 lesson concept mappings",
+      "actual": {
+        "unestablished_count": 5,
+        "mapping_count": 5
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check for preflight pass",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module03/applied-labs/r04-t056 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
