@@ -1,0 +1,157 @@
+{
+  "task_id": "R04-T059",
+  "issue": 59,
+  "module": "Module06/01.IntroduceAgent.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "canonical_capability_negotiation",
+      "inputs": {
+        "client_capabilities": [
+          "resources",
+          "tools"
+        ],
+        "server_capabilities": [
+          "prompts",
+          "tools"
+        ]
+      },
+      "expected": {
+        "negotiated_capabilities": [
+          "tools"
+        ],
+        "client_unmatched": [
+          "resources"
+        ],
+        "server_unmatched": [
+          "prompts"
+        ],
+        "capability_retention_ratio": 0.5
+      },
+      "actual": {
+        "negotiated_capabilities": [
+          "tools"
+        ],
+        "client_unmatched": [
+          "resources"
+        ],
+        "server_unmatched": [
+          "prompts"
+        ],
+        "capability_retention_ratio": 0.5
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "canonical_dispatch_tools_permitted",
+      "inputs": {
+        "capability": "tools",
+        "operation": "calculator"
+      },
+      "expected": {
+        "status": "DISPATCHED",
+        "dispatched": true,
+        "reason": null
+      },
+      "actual": {
+        "status": "DISPATCHED",
+        "dispatched": true,
+        "reason": null
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "calling_resources_rejected_before_dispatch",
+      "inputs": {
+        "capability": "resources",
+        "operation": "read_file"
+      },
+      "expected": {
+        "status": "REJECTED",
+        "dispatched": false,
+        "rejection_contained_phrase": "rejected before dispatch"
+      },
+      "actual": {
+        "status": "REJECTED",
+        "dispatched": false,
+        "rejection_reason": "Invocation of capability 'resources' rejected before dispatch: capability was not negotiated. Negotiated capabilities: ['tools']."
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "strict_mode_unnegotiated_capability_error",
+      "inputs": {
+        "capability": "resources",
+        "strict": true
+      },
+      "expected": {
+        "exception_raised": true,
+        "exception_type": "UnnegotiatedCapabilityError"
+      },
+      "actual": {
+        "exception_raised": true
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "three_controlled_configurations_comparison",
+      "inputs": {
+        "configurations_evaluated": [
+          "Config-Small (Canonical)",
+          "Config-Medium (Multi-Feature)",
+          "Config-Large (Expanded)"
+        ]
+      },
+      "expected": {
+        "configs_count": 3,
+        "all_correctness_rates": 1.0,
+        "all_unauthorized_dispatches": 0,
+        "trade_off_analysis_present": true
+      },
+      "actual": {
+        "configs_count": 3,
+        "correctness_rates": {
+          "Config-Small (Canonical)": 1.0,
+          "Config-Medium (Multi-Feature)": 1.0,
+          "Config-Large (Expanded)": 1.0
+        },
+        "unauthorized_dispatches": {
+          "Config-Small (Canonical)": 0,
+          "Config-Medium (Multi-Feature)": 0,
+          "Config-Large (Expanded)": 0
+        },
+        "trade_off_analysis_present": true
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "unestablished_behaviors_and_concept_mapping",
+      "expected": "At least 5 unestablished behaviors and 5 lesson concept mappings",
+      "actual": {
+        "unestablished_count": 5,
+        "mapping_count": 5
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check: resources must not be dispatched",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module06/applied-labs/r04-t059 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
