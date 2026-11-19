@@ -1,0 +1,132 @@
+{
+  "task_id": "R04-T060",
+  "issue": 60,
+  "module": "Module02/01.PhiFamily.md",
+  "python_version": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "tool_versions": {
+    "python": "3.9.6",
+    "unittest": "standard_library",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64"
+  },
+  "test_cases": [
+    {
+      "name": "canonical_manifest_selection_admits_only_a",
+      "inputs": {
+        "manifest": [
+          {
+            "model_id": "fixture-a",
+            "name": "Synthetic Phi-Mini Teaching Variant A",
+            "required_ram_gb": 4.0,
+            "max_context_length": 2048,
+            "family": "phi-synthetic"
+          },
+          {
+            "model_id": "fixture-b",
+            "name": "Synthetic Phi-Medium Teaching Variant B",
+            "required_ram_gb": 8.0,
+            "max_context_length": 4096,
+            "family": "phi-synthetic"
+          }
+        ],
+        "ram_budget_gb": 6.0,
+        "requested_context": 1024
+      },
+      "expected": {
+        "admitted_ids": [
+          "fixture-a"
+        ],
+        "excluded_ids": [
+          "fixture-b"
+        ]
+      },
+      "actual": {
+        "admitted_ids": [
+          "fixture-a"
+        ],
+        "excluded_ids": [
+          "fixture-b"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "name": "fixture_b_actionable_failure_reported",
+      "inputs": {
+        "model_id": "fixture-b",
+        "required_ram": 8.0,
+        "budget_ram": 6.0
+      },
+      "expected": "Insufficient RAM: model requires 8.0 GB, but host budget is 6.0 GB.",
+      "actual": [
+        "Insufficient RAM: model requires 8.0 GB, but host budget is 6.0 GB."
+      ],
+      "status": "PASSED"
+    },
+    {
+      "name": "applied_question_1_predict_output",
+      "question_id": "Q1_PREDICT_OUTPUT",
+      "prompt": "Given an edge host configured with RAM budget 10.0 GB and requested context length 3000 tokens, which models from [Fixture A (RAM4/context2048), Fixture B (RAM8/context4096)] are admitted and which are excluded?",
+      "expected_answer": {
+        "admitted_ids": [
+          "fixture-b"
+        ],
+        "excluded_ids": [
+          "fixture-a"
+        ]
+      },
+      "check_passed": true,
+      "status": "PASSED"
+    },
+    {
+      "name": "applied_question_2_diagnose_failure",
+      "question_id": "Q2_DIAGNOSE_FAILURE",
+      "prompt": "When evaluating [Fixture A, Fixture B] on a constrained device with RAM budget 3.0 GB and requested context 1024 tokens, both models fail admission. What is the specific resource bottleneck causing Fixture A's disqualification, and what actionable remedy resolves it?",
+      "expected_answer": {
+        "failing_model": "fixture-a",
+        "primary_bottleneck": "RAM",
+        "required_vs_budget": "4.0 GB required vs 3.0 GB budget",
+        "diagnostic_reason": "Insufficient RAM: model requires 4.0 GB, but host budget is 3.0 GB.",
+        "actionable_remedy": "Increase host RAM allocation to at least 4.0 GB or apply INT4 quantization to reduce memory footprint below 3.0 GB."
+      },
+      "check_passed": true,
+      "status": "PASSED"
+    },
+    {
+      "name": "applied_question_3_choose_boundary_policy",
+      "question_id": "Q3_CHOOSE_BOUNDARY_POLICY",
+      "prompt": "For an edge device where a model entry's resource requirements match the environment constraints exactly (required RAM == host budget, and max context == requested context), which boundary policy should the selector enforce: inclusive boundary admission (<= and >=) or strict inequality (< and >)?",
+      "expected_answer": {
+        "chosen_policy": "INCLUSIVE_BOUNDARY_ADMISSION",
+        "ram_comparison": "<=",
+        "context_comparison": ">=",
+        "boundary_verdict": "ADMITTED"
+      },
+      "check_passed": true,
+      "status": "PASSED"
+    },
+    {
+      "name": "unestablished_behaviors_and_concept_mapping",
+      "expected": "At least 5 unestablished behaviors and 5 lesson concept mappings",
+      "actual": {
+        "unestablished_count": 5,
+        "mapping_count": 5
+      },
+      "status": "PASSED"
+    }
+  ],
+  "deliberate_failure_demonstration": {
+    "description": "Verify deliberate wrong result causes non-zero exit code",
+    "exit_code": 1,
+    "stderr_snippet": "AssertionError: Intentional failure check: fixture-b must not be admitted",
+    "deliberate_failure_verified": true
+  },
+  "unittest_execution": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest discover -s Module02/applied-labs/r04-t060 -p test_*.py",
+    "exit_code": 0,
+    "raw_output": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.000s\n\nOK"
+  },
+  "all_checks_passed": true
+}
