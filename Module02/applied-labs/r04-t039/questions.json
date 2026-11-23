@@ -1,0 +1,20 @@
+[
+  {
+    "id": "Q1_predict_output",
+    "question": "What is the quantized int8 value and reconstructed float for input 5.0 with scale 0.1?",
+    "answer": {"quantized": 50, "reconstructed": 5.0},
+    "rationale": "5.0 / 0.1 = 50. Since 50 falls inside [-127, 127], it does not clip. Dequantizing 50 * 0.1 yields exactly 5.0."
+  },
+  {
+    "id": "Q2_diagnose_failure",
+    "question": "Why does initializing the quantizer with scale = -0.5 fail?",
+    "answer": "REJECTED_NONPOSITIVE_SCALE",
+    "rationale": "Scale factors in symmetric quantization represent positive step size ratios (delta = range / steps). A negative or zero scale is mathematically meaningless for distance scaling and is explicitly rejected."
+  },
+  {
+    "id": "Q3_boundary_policy",
+    "question": "Why does symmetric int8 clamp to [-127, 127] instead of standard two's complement [-128, 127]?",
+    "answer": "SYMMETRIC_ZERO_REPRESENTATION",
+    "rationale": "Symmetric signed quantization ensures exact symmetry around 0 without a zero-point offset: -q maps to -x and +q maps to +x with identical saturation thresholds on both positive and negative poles."
+  }
+]
