@@ -1,0 +1,13 @@
+test_deliberate_failure_check (test_example.TestCapabilityNegotiation.test_deliberate_failure_check)
+Demonstrate that unnegotiated capability cannot be dispatched even if handler is present. ... ok
+test_empty_negotiation (test_example.TestCapabilityNegotiation.test_empty_negotiation)
+Verify behavior when client and server have disjoint capability sets. ... ok
+test_intersection_and_gated_dispatch (test_example.TestCapabilityNegotiation.test_intersection_and_gated_dispatch)
+Verify: ... ok
+test_run_demo (test_example.TestCapabilityNegotiation.test_run_demo)
+Verify the canonical demo execution returns expected structure. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
