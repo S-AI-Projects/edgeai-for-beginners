@@ -1,0 +1,15 @@
+test_budget_3_with_four_tokens (test_example.TestTokenBudgetPreflight.test_budget_3_with_four_tokens)
+Budget 3 with 'one two three four' retains [one, two, three] and reports 1 removed token. ... ok
+test_compare_direct_with_independent_oracle (test_example.TestTokenBudgetPreflight.test_compare_direct_with_independent_oracle)
+Compare direct implementation with independent reference calculation on identical inputs. ... ok
+test_deliberate_wrong_result_fails (test_example.TestTokenBudgetPreflight.test_deliberate_wrong_result_fails)
+Deliberate wrong assertion fails. ... ok
+test_empty_input_retains_none (test_example.TestTokenBudgetPreflight.test_empty_input_retains_none)
+Empty input retains none. ... ok
+test_reject_negative_budget (test_example.TestTokenBudgetPreflight.test_reject_negative_budget)
+Negative budget is rejected with ValueError. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
