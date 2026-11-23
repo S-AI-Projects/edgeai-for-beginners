@@ -1,0 +1,42 @@
+{
+  "baseline": [
+    {
+      "status": "success",
+      "tool": "add",
+      "result": 5
+    },
+    {
+      "status": "success",
+      "tool": "multiply",
+      "result": 6
+    },
+    {
+      "status": "error",
+      "error": {
+        "code": "UNKNOWN_TOOL",
+        "message": "Tool 'unknown_tool' not found",
+        "tool": "unknown_tool"
+      }
+    }
+  ],
+  "refactored": [
+    {
+      "status": "success",
+      "tool": "add",
+      "result": 5
+    },
+    {
+      "status": "success",
+      "tool": "multiply",
+      "result": 6
+    },
+    {
+      "status": "error",
+      "error": {
+        "code": "UNKNOWN_TOOL",
+        "message": "Tool 'unknown_tool' not found",
+        "tool": "unknown_tool"
+      }
+    }
+  ]
+}

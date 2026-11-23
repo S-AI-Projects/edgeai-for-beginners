@@ -1,0 +1,15 @@
+test_add_and_multiply_contracts (test_example.TestRefactoredToolDispatch.test_add_and_multiply_contracts)
+Verify add(2,3) -> 5 and multiply(2,3) -> 6. ... ok
+test_baseline_and_refactored_equivalence (test_example.TestRefactoredToolDispatch.test_baseline_and_refactored_equivalence)
+Prove before/after equivalence across positive, negative, and edge fixtures. ... ok
+test_deliberate_wrong_result_fails (test_example.TestRefactoredToolDispatch.test_deliberate_wrong_result_fails)
+Assertion fails when result is intentionally wrong. ... ok
+test_pipeline_stops_on_failure (test_example.TestRefactoredToolDispatch.test_pipeline_stops_on_failure)
+Pipeline halts on error so failed call cannot execute another tool. ... ok
+test_unknown_tool_and_string_arg_errors (test_example.TestRefactoredToolDispatch.test_unknown_tool_and_string_arg_errors)
+Unknown tool and string a produce structured errors. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
