@@ -1,0 +1,6 @@
+Capability Negotiation Demo Output:
+  client_capabilities: ['resources', 'tools']
+  server_capabilities: ['prompts', 'tools']
+  negotiated_capabilities: ['tools']
+  tool_call_result: Processed tool invocation: search_docs
+  rejected_unnegotiated: Invocation rejected: capability 'resources' was not negotiated. Active capabilities: ['tools']
