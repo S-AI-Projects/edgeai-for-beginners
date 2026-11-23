@@ -1,0 +1,19 @@
+{
+  "available_ram_gb": 6,
+  "requested_context": 1024,
+  "eligible": [
+    {
+      "id": "Fixture-A",
+      "required_ram_gb": 4,
+      "max_context": 2048
+    }
+  ],
+  "excluded": [
+    {
+      "model_id": "Fixture-B",
+      "reasons": [
+        "Required RAM 8GB exceeds available 6GB"
+      ]
+    }
+  ]
+}

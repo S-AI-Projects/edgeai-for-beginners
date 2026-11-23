@@ -1,0 +1,13 @@
+test_adapter_protocol_determinism (test_example.TestOfflineServiceAdapter.test_adapter_protocol_determinism)
+Verify the offline adapter returns deterministic fixtures without mutations. ... ok
+test_boundary_exact_match (test_example.TestOfflineServiceAdapter.test_boundary_exact_match)
+Verify exact boundary match: RAM 4 and context 2048 admits A. ... ok
+test_deliberate_wrong_result_fails (test_example.TestOfflineServiceAdapter.test_deliberate_wrong_result_fails)
+Deliberate wrong expectation must fail assertion. ... ok
+test_ram6_context1024_admits_only_a (test_example.TestOfflineServiceAdapter.test_ram6_context1024_admits_only_a)
+Budget RAM 6 and requested context 1024 admits only Fixture A. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
