@@ -1,0 +1,50 @@
+{
+  "canonical_retained_ids": [
+    "B",
+    "C",
+    "D"
+  ],
+  "caller_mutation_did_not_affect_stored": true,
+  "evaluation_experiment": {
+    "capacity_2": {
+      "capacity": 2,
+      "total_added": 6,
+      "retained_count": 2,
+      "evicted_count": 4,
+      "retention_ratio": 0.333,
+      "retained_ids": [
+        "rec_5",
+        "rec_6"
+      ],
+      "mutation_safe": true
+    },
+    "capacity_3": {
+      "capacity": 3,
+      "total_added": 6,
+      "retained_count": 3,
+      "evicted_count": 3,
+      "retention_ratio": 0.5,
+      "retained_ids": [
+        "rec_4",
+        "rec_5",
+        "rec_6"
+      ],
+      "mutation_safe": true
+    },
+    "capacity_5": {
+      "capacity": 5,
+      "total_added": 6,
+      "retained_count": 5,
+      "evicted_count": 1,
+      "retention_ratio": 0.833,
+      "retained_ids": [
+        "rec_2",
+        "rec_3",
+        "rec_4",
+        "rec_5",
+        "rec_6"
+      ],
+      "mutation_safe": true
+    }
+  }
+}
