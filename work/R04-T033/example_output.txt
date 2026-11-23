@@ -1,0 +1,43 @@
+{
+  "inputs": {
+    "available_ram_gb": 6,
+    "requested_context": 1024
+  },
+  "eligible": [
+    {
+      "id": "Fixture-A",
+      "required_ram_gb": 4,
+      "max_context": 2048
+    }
+  ],
+  "excluded": [
+    {
+      "model_id": "Fixture-B",
+      "reasons": [
+        "Insufficient RAM: required 8GB exceeds budget 6GB"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "model_id": "Fixture-A",
+      "required_ram_gb": 4,
+      "max_context": 2048,
+      "eval_ram": true,
+      "eval_context": true,
+      "eligible": true,
+      "reasons": []
+    },
+    {
+      "model_id": "Fixture-B",
+      "required_ram_gb": 8,
+      "max_context": 4096,
+      "eval_ram": false,
+      "eval_context": true,
+      "eligible": false,
+      "reasons": [
+        "Insufficient RAM: required 8GB exceeds budget 6GB"
+      ]
+    }
+  ]
+}

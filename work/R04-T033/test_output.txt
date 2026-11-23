@@ -1,0 +1,13 @@
+test_context_exclusion (test_example.TestManifestSelection.test_context_exclusion)
+Test exclusion when RAM is sufficient but context is insufficient. ... ok
+test_deliberate_wrong_result_fails (test_example.TestManifestSelection.test_deliberate_wrong_result_fails)
+Ensure incorrect eligibility assertion fails. ... ok
+test_ram6_context1024_admits_only_a (test_example.TestManifestSelection.test_ram6_context1024_admits_only_a)
+Verify: Budget RAM 6 and requested context 1024 admits only Fixture A. ... ok
+test_state_trace_invariants (test_example.TestManifestSelection.test_state_trace_invariants)
+Verify the invariant linking intermediate trace records to final output: ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
