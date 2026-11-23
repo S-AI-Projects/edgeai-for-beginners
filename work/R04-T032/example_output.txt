@@ -1,0 +1,37 @@
+{
+  "pipeline_results": [
+    {
+      "status": "success",
+      "tool": "add",
+      "result": 5
+    },
+    {
+      "status": "success",
+      "tool": "multiply",
+      "result": 6
+    },
+    {
+      "status": "error",
+      "error": {
+        "code": "UNKNOWN_TOOL",
+        "message": "Tool 'unknown_tool' is not in allowlist ['add', 'multiply']",
+        "tool": "unknown_tool",
+        "details": {}
+      }
+    },
+    {
+      "status": "error",
+      "error": {
+        "code": "INVALID_ARGUMENT_TYPE",
+        "message": "Parameter 'a' must be a numeric type (int or float), got str",
+        "tool": "add",
+        "details": {
+          "parameter": "a",
+          "expected": "int | float",
+          "received_type": "str",
+          "received_value": "2"
+        }
+      }
+    }
+  ]
+}

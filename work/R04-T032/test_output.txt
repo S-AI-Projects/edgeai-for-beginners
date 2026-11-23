@@ -1,0 +1,19 @@
+test_boolean_argument_rejection (test_example.TestTypedToolDispatch.test_boolean_argument_rejection)
+Booleans should not pass as numbers despite being int subclasses. ... ok
+test_deliberate_wrong_result_fails (test_example.TestTypedToolDispatch.test_deliberate_wrong_result_fails)
+Verification that wrong calculation or bypass will fail assertions. ... ok
+test_pipeline_halt_on_error (test_example.TestTypedToolDispatch.test_pipeline_halt_on_error)
+A failed call halts execution and prevents subsequent tools from executing. ... ok
+test_smallest_valid_and_boundary_cases (test_example.TestTypedToolDispatch.test_smallest_valid_and_boundary_cases)
+Boundary values: zeros, negative numbers, floats. ... ok
+test_structured_error_string_argument (test_example.TestTypedToolDispatch.test_structured_error_string_argument)
+Non-numeric string parameter produces structured error. ... ok
+test_structured_error_unknown_tool (test_example.TestTypedToolDispatch.test_structured_error_unknown_tool)
+Rejection of un-allowlisted tool produces structured error. ... ok
+test_valid_invocations (test_example.TestTypedToolDispatch.test_valid_invocations)
+Test add(2,3) -> 5 and multiply(2,3) -> 6. ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK
