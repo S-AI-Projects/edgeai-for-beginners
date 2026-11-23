@@ -1,0 +1,64 @@
+{
+  "valid_plan_result": {
+    "status": "accepted",
+    "stages": [
+      "export",
+      "quantize",
+      "benchmark"
+    ],
+    "lineage": [
+      {
+        "stage": "export",
+        "consumed": "model_raw",
+        "produced": "model_onnx"
+      },
+      {
+        "stage": "quantize",
+        "consumed": "model_onnx",
+        "produced": "model_q4"
+      },
+      {
+        "stage": "benchmark",
+        "consumed": "model_q4",
+        "produced": "benchmark_report"
+      }
+    ],
+    "final_artifacts": [
+      "benchmark_report",
+      "model_onnx",
+      "model_q4",
+      "model_raw"
+    ]
+  },
+  "invalid_order_rejection": {
+    "status": "rejected",
+    "error": {
+      "code": "PIPELINE_VALIDATION_ERROR",
+      "validation_code": "INVALID_STAGE_ORDER",
+      "message": "Invalid stage ordering: stage 'quantize' cannot follow prior stages in order ['export', 'benchmark', 'quantize']",
+      "details": {
+        "stage": "quantize",
+        "stage_sequence": [
+          "export",
+          "benchmark",
+          "quantize"
+        ]
+      }
+    }
+  },
+  "unknown_artifact_rejection": {
+    "status": "rejected",
+    "error": {
+      "code": "PIPELINE_VALIDATION_ERROR",
+      "validation_code": "UNKNOWN_ARTIFACT_REFERENCE",
+      "message": "Stage 'export' references unknown input artifact 'ghost_model'. Available: ['model_raw']",
+      "details": {
+        "stage": "export",
+        "missing_artifact": "ghost_model",
+        "available": [
+          "model_raw"
+        ]
+      }
+    }
+  }
+}

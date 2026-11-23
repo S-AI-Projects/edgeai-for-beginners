@@ -1,0 +1,15 @@
+test_benchmark_before_quantize_rejected (test_example.TestOptimizationPlanValidation.test_benchmark_before_quantize_rejected)
+Ordering violation (benchmark before quantize) is rejected. ... ok
+test_deliberate_wrong_result_fails (test_example.TestOptimizationPlanValidation.test_deliberate_wrong_result_fails)
+Deliberate wrong assertion fails. ... ok
+test_run_demo_regression (test_example.TestOptimizationPlanValidation.test_run_demo_regression)
+Ensure regression execution of run_demo matches expected contracts. ... ok
+test_unknown_artifact_reference_rejected (test_example.TestOptimizationPlanValidation.test_unknown_artifact_reference_rejected)
+Referencing an undeclared input artifact is rejected. ... ok
+test_valid_plan_accepted (test_example.TestOptimizationPlanValidation.test_valid_plan_accepted)
+[export, quantize, benchmark] with valid artifact lineage is accepted. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
