@@ -1,0 +1,34 @@
+{
+  "step_1_failure": {
+    "eligible": [],
+    "excluded": [],
+    "errors": [
+      {
+        "error": "MALFORMED_MANIFEST_ENTRY",
+        "message": "Missing required field: 'max_context'",
+        "raw_entry": {
+          "id": "Corrupted-Entry",
+          "required_ram_gb": 4
+        }
+      }
+    ]
+  },
+  "step_2_recovery": {
+    "eligible": [
+      {
+        "id": "Fixture-A",
+        "required_ram_gb": 4,
+        "max_context": 2048
+      }
+    ],
+    "excluded": [
+      {
+        "model_id": "Fixture-B",
+        "reasons": [
+          "Required RAM 8GB exceeds budget 6GB"
+        ]
+      }
+    ],
+    "errors": []
+  }
+}

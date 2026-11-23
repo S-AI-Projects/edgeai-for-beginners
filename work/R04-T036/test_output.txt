@@ -1,0 +1,13 @@
+test_canonical_selection (test_example.TestManifestFailureAndRecovery.test_canonical_selection)
+Fixture A admitted, Fixture B excluded under RAM 6 / Context 1024. ... ok
+test_deliberate_wrong_result_fails (test_example.TestManifestFailureAndRecovery.test_deliberate_wrong_result_fails)
+Deliberate wrong assertion fails. ... ok
+test_missing_data_failure (test_example.TestManifestFailureAndRecovery.test_missing_data_failure)
+Missing field generates structured error envelope. ... ok
+test_recovery_on_subsequent_valid_input (test_example.TestManifestFailureAndRecovery.test_recovery_on_subsequent_valid_input)
+System recovers completely on subsequent valid input without state poisoning. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
