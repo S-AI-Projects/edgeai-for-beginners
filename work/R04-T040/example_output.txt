@@ -1,0 +1,53 @@
+{
+  "scenario_1": {
+    "direct": {
+      "budget": 3,
+      "total_tokens": 4,
+      "retained_tokens": [
+        "one",
+        "two",
+        "three"
+      ],
+      "retained_count": 3,
+      "removed_count": 1,
+      "truncated": true,
+      "reconstructed_text": "one two three"
+    },
+    "oracle": {
+      "budget": 3,
+      "total_tokens": 4,
+      "retained_tokens": [
+        "one",
+        "two",
+        "three"
+      ],
+      "retained_count": 3,
+      "removed_count": 1,
+      "truncated": true,
+      "reconstructed_text": "one two three"
+    },
+    "agrees": true
+  },
+  "scenario_2": {
+    "direct": {
+      "budget": 3,
+      "total_tokens": 0,
+      "retained_tokens": [],
+      "retained_count": 0,
+      "removed_count": 0,
+      "truncated": false,
+      "reconstructed_text": ""
+    },
+    "oracle": {
+      "budget": 3,
+      "total_tokens": 0,
+      "retained_tokens": [],
+      "retained_count": 0,
+      "removed_count": 0,
+      "truncated": false,
+      "reconstructed_text": ""
+    },
+    "agrees": true
+  },
+  "negative_budget_error": "Token budget must be a non-negative integer, got: -1"
+}
