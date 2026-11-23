@@ -1,0 +1,13 @@
+test_adding_abcd_retains_bcd (test_example.TestBoundedConversationMemory.test_adding_abcd_retains_bcd)
+Adding records A,B,C,D retains B,C,D in arrival order. ... ok
+test_caller_mutation_isolation (test_example.TestBoundedConversationMemory.test_caller_mutation_isolation)
+Mutating the returned list does not alter stored memory. ... ok
+test_deliberate_wrong_result_fails (test_example.TestBoundedConversationMemory.test_deliberate_wrong_result_fails)
+Deliberate wrong assertion fails. ... ok
+test_evaluation_experiment_metrics (test_example.TestBoundedConversationMemory.test_evaluation_experiment_metrics)
+Compare 3 controlled configurations (cap 2, 3, 5) on a 6-item stream. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
